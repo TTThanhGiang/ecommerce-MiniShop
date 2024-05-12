@@ -148,6 +148,7 @@
       <DependentUpon>MiniShopModels.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelFormLogin.cs" />
+    <Compile Include="Models\ModelSanpham.cs" />
     <Compile Include="Models\tbBAIDANG.cs">
       <DependentUpon>MiniShopModels.tt</DependentUpon>
     </Compile>
@@ -925,6 +926,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\DangKy.cshtml" />
     <Content Include="Views\Home\ChiTietSanPham.cshtml" />
+    <Content Include="Views\Home\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -208,7 +208,7 @@
                                 </div>
                                 <div class="prd-bottom">
 
-                                    <a href="/TrangChu/AddToCart?id=@item.MASANPHAM" class="social-info">
+                                    <a href="@Url.Action("AddToCart", "Home", new {masanpham = @item.MASANPHAM })" class="social-info">
                                         <span class="ti-bag"></span>
                                         <p class="hover-text">add to bag</p>
                                     </a>
@@ -264,7 +264,7 @@
                                 </div>
                                 <div class="prd-bottom">
 
-                                    <a href="/TrangChu/AddToCart?id=@item.MASANPHAM" class="social-info">
+                                    <a href="@Url.Action("AddToCart", "Home", new {masanpham = @item.MASANPHAM })" class="social-info">
                                         <span class="ti-bag"></span>
                                         <p class="hover-text">add to bag</p>
                                     </a>
@@ -340,7 +340,7 @@
                                     @Html.ActionLink((String)(@item.TENSANPHAM), "ChiTietSanPham", new { masanpham = @item.MASANPHAM })
                                 </h4>
                                 <div class="add-bag d-flex align-items-center justify-content-center">
-                                    <a class="add-btn" href="/TrangChu/AddToCart?id=@item.MASANPHAM"><span class="ti-bag"></span></a>
+                                    <a class="add-btn" href="@Url.Action("AddToCart", "Home", new {masanpham = @item.MASANPHAM })"><span class="ti-bag"></span></a>
                                     <span class="add-text text-uppercase">Add to Bag</span>
                                 </div>
                             </div>
@@ -394,7 +394,7 @@
                 <div class="row">
                     @foreach (var item in ViewBag.sanphamchatluong)
                     {
-                        <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+                        <div class="col-lg-4 col-md-4 col-sm-6 mb-20">  
                             <div class="single-related-product d-flex">
                                 <a href="#"><img src="~/img/product/@item.HINHANH" alt="" width="80px" height="80px"></a>
                                 <div class="desc">
