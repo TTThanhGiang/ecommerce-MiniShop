@@ -94,13 +94,12 @@ namespace ThanhGiang_WebCuoiKi.Controllers
                 db.tbKHACHHANGs.Add(kh);
                 db.SaveChanges();
                 }
-                
 
-
-            }
 
             return View();
-
         }
+
+            
+
     }
 }
