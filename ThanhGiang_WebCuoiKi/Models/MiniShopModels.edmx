@@ -1,0 +1,842 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbMiniShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbBAIDANG">
+          <Key>
+            <PropertyRef Name="MABAIDANG" />
+          </Key>
+          <Property Name="MABAIDANG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIEUDE" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="NOIDUNG" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HINHANH" Type="nvarchar" MaxLength="50" />
+          <Property Name="NGUOIDANG" Type="int" />
+          <Property Name="NGAYDANG" Type="date" />
+          <Property Name="NGAYBATDAU" Type="date" />
+          <Property Name="NGAYKETTHUC" Type="date" />
+          <Property Name="MACHUYENMUC" Type="int" />
+        </EntityType>
+        <EntityType Name="tbCHITIETHOADON">
+          <Key>
+            <PropertyRef Name="MACHITIET" />
+          </Key>
+          <Property Name="MACHITIET" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MASANPHAM" Type="int" />
+          <Property Name="HD_SOLUONG" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="HD_DONGIA" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="MAHOADON" Type="int" />
+        </EntityType>
+        <EntityType Name="tbCHUYENMUC">
+          <Key>
+            <PropertyRef Name="MACHUYENMUC" />
+          </Key>
+          <Property Name="MACHUYENMUC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENCHUYENMUC" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tbDANHMUC">
+          <Key>
+            <PropertyRef Name="MADANHMUC" />
+          </Key>
+          <Property Name="MADANHMUC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENDANHMUC" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tbGIOHANG">
+          <Key>
+            <PropertyRef Name="MAGIOHANG" />
+          </Key>
+          <Property Name="MAGIOHANG" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MAKHACHHANG" Type="int" />
+          <Property Name="MASANPHAM" Type="int" />
+          <Property Name="SOLUONG" Type="int" />
+          <Property Name="DONGIA" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="tbHOADON">
+          <Key>
+            <PropertyRef Name="MAHOADON" />
+          </Key>
+          <Property Name="MAHOADON" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MAKHACHHANG" Type="int" />
+          <Property Name="NGAYTAO" Type="date" />
+          <Property Name="TRANGTHAI" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbKHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKHACHHANG" />
+          </Key>
+          <Property Name="MAKHACHHANG" Type="int" Nullable="false" />
+          <Property Name="HOTEN" Type="nvarchar" MaxLength="100" />
+          <Property Name="NGAYSINH" Type="date" />
+          <Property Name="GIOITINH" Type="nvarchar" MaxLength="10" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="200" />
+          <Property Name="SDT" Type="varchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="tbNGUOIDUNG">
+          <Key>
+            <PropertyRef Name="MANGUOIDUNG" />
+          </Key>
+          <Property Name="MANGUOIDUNG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENDANGNHAP" Type="varchar" MaxLength="50" />
+          <Property Name="MATKHAU" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
+          <Property Name="VAITRO" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbNHANVIEN">
+          <Key>
+            <PropertyRef Name="MANHANVIEN" />
+          </Key>
+          <Property Name="MANHANVIEN" Type="int" Nullable="false" />
+          <Property Name="HOTEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="NGAYSINH" Type="date" />
+          <Property Name="GIOITINH" Type="nvarchar" MaxLength="10" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="200" />
+          <Property Name="SDT" Type="varchar" MaxLength="11" />
+          <Property Name="MAPHONGBAN" Type="int" />
+        </EntityType>
+        <EntityType Name="tbPHONGBAN">
+          <Key>
+            <PropertyRef Name="MAPHONGBAN" />
+          </Key>
+          <Property Name="MAPHONGBAN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENPHONGBAN" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbSANPHAM">
+          <Key>
+            <PropertyRef Name="MASANPHAM" />
+          </Key>
+          <Property Name="MASANPHAM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENSANPHAM" Type="nvarchar" MaxLength="200" />
+          <Property Name="DONGIA" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="SOLUONG" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="HINHANH" Type="nvarchar" MaxLength="50" />
+          <Property Name="MOTA" Type="nvarchar(max)" />
+          <Property Name="MADANHMUC" Type="int" />
+          <Property Name="NGAYCAPNHAT" Type="datetime" />
+          <Property Name="SOLUONGDABAN" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="SOLUONGTOITHIEU" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="SOLUOTDANHGIA" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CHATLUONG" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <Association Name="FK__tbBAIDANG__MACHU__412EB0B6">
+          <End Role="tbCHUYENMUC" Type="Self.tbCHUYENMUC" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbBAIDANG" Type="Self.tbBAIDANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCHUYENMUC">
+              <PropertyRef Name="MACHUYENMUC" />
+            </Principal>
+            <Dependent Role="tbBAIDANG">
+              <PropertyRef Name="MACHUYENMUC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbBAIDANG__NGUOI__4222D4EF">
+          <End Role="tbNHANVIEN" Type="Self.tbNHANVIEN" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbBAIDANG" Type="Self.tbBAIDANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNHANVIEN">
+              <PropertyRef Name="MANHANVIEN" />
+            </Principal>
+            <Dependent Role="tbBAIDANG">
+              <PropertyRef Name="NGUOIDANG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbCHITIET__MAHOA__38996AB5">
+          <End Role="tbHOADON" Type="Self.tbHOADON" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbCHITIETHOADON" Type="Self.tbCHITIETHOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbHOADON">
+              <PropertyRef Name="MAHOADON" />
+            </Principal>
+            <Dependent Role="tbCHITIETHOADON">
+              <PropertyRef Name="MAHOADON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbCHITIET__MASAN__37A5467C">
+          <End Role="tbSANPHAM" Type="Self.tbSANPHAM" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbCHITIETHOADON" Type="Self.tbCHITIETHOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSANPHAM">
+              <PropertyRef Name="MASANPHAM" />
+            </Principal>
+            <Dependent Role="tbCHITIETHOADON">
+              <PropertyRef Name="MASANPHAM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbGIOHANG__MAKHA__3B75D760">
+          <End Role="tbKHACHHANG" Type="Self.tbKHACHHANG" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbGIOHANG" Type="Self.tbGIOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbKHACHHANG">
+              <PropertyRef Name="MAKHACHHANG" />
+            </Principal>
+            <Dependent Role="tbGIOHANG">
+              <PropertyRef Name="MAKHACHHANG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbGIOHANG__MASAN__3C69FB99">
+          <End Role="tbSANPHAM" Type="Self.tbSANPHAM" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbGIOHANG" Type="Self.tbGIOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSANPHAM">
+              <PropertyRef Name="MASANPHAM" />
+            </Principal>
+            <Dependent Role="tbGIOHANG">
+              <PropertyRef Name="MASANPHAM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbHOADON__MAKHAC__34C8D9D1">
+          <End Role="tbKHACHHANG" Type="Self.tbKHACHHANG" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbHOADON" Type="Self.tbHOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbKHACHHANG">
+              <PropertyRef Name="MAKHACHHANG" />
+            </Principal>
+            <Dependent Role="tbHOADON">
+              <PropertyRef Name="MAKHACHHANG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbKHACHHA__MAKHA__2D27B809">
+          <End Role="tbNGUOIDUNG" Type="Self.tbNGUOIDUNG" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbKHACHHANG" Type="Self.tbKHACHHANG" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbNGUOIDUNG">
+              <PropertyRef Name="MANGUOIDUNG" />
+            </Principal>
+            <Dependent Role="tbKHACHHANG">
+              <PropertyRef Name="MAKHACHHANG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbNHANVIE__MANHA__2A4B4B5E">
+          <End Role="tbNGUOIDUNG" Type="Self.tbNGUOIDUNG" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbNHANVIEN" Type="Self.tbNHANVIEN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbNGUOIDUNG">
+              <PropertyRef Name="MANGUOIDUNG" />
+            </Principal>
+            <Dependent Role="tbNHANVIEN">
+              <PropertyRef Name="MANHANVIEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbNHANVIE__MAPHO__29572725">
+          <End Role="tbPHONGBAN" Type="Self.tbPHONGBAN" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbNHANVIEN" Type="Self.tbNHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPHONGBAN">
+              <PropertyRef Name="MAPHONGBAN" />
+            </Principal>
+            <Dependent Role="tbNHANVIEN">
+              <PropertyRef Name="MAPHONGBAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbSANPHAM__MADAN__31EC6D26">
+          <End Role="tbDANHMUC" Type="Self.tbDANHMUC" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbSANPHAM" Type="Self.tbSANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDANHMUC">
+              <PropertyRef Name="MADANHMUC" />
+            </Principal>
+            <Dependent Role="tbSANPHAM">
+              <PropertyRef Name="MADANHMUC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbMiniShopModelStoreContainer">
+          <EntitySet Name="tbBAIDANG" EntityType="Self.tbBAIDANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbCHITIETHOADON" EntityType="Self.tbCHITIETHOADON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbCHUYENMUC" EntityType="Self.tbCHUYENMUC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbDANHMUC" EntityType="Self.tbDANHMUC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbGIOHANG" EntityType="Self.tbGIOHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbHOADON" EntityType="Self.tbHOADON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbKHACHHANG" EntityType="Self.tbKHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbNGUOIDUNG" EntityType="Self.tbNGUOIDUNG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbNHANVIEN" EntityType="Self.tbNHANVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPHONGBAN" EntityType="Self.tbPHONGBAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbSANPHAM" EntityType="Self.tbSANPHAM" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tbBAIDANG__MACHU__412EB0B6" Association="Self.FK__tbBAIDANG__MACHU__412EB0B6">
+            <End Role="tbCHUYENMUC" EntitySet="tbCHUYENMUC" />
+            <End Role="tbBAIDANG" EntitySet="tbBAIDANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbBAIDANG__NGUOI__4222D4EF" Association="Self.FK__tbBAIDANG__NGUOI__4222D4EF">
+            <End Role="tbNHANVIEN" EntitySet="tbNHANVIEN" />
+            <End Role="tbBAIDANG" EntitySet="tbBAIDANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbCHITIET__MAHOA__38996AB5" Association="Self.FK__tbCHITIET__MAHOA__38996AB5">
+            <End Role="tbHOADON" EntitySet="tbHOADON" />
+            <End Role="tbCHITIETHOADON" EntitySet="tbCHITIETHOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbCHITIET__MASAN__37A5467C" Association="Self.FK__tbCHITIET__MASAN__37A5467C">
+            <End Role="tbSANPHAM" EntitySet="tbSANPHAM" />
+            <End Role="tbCHITIETHOADON" EntitySet="tbCHITIETHOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbGIOHANG__MAKHA__3B75D760" Association="Self.FK__tbGIOHANG__MAKHA__3B75D760">
+            <End Role="tbKHACHHANG" EntitySet="tbKHACHHANG" />
+            <End Role="tbGIOHANG" EntitySet="tbGIOHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbGIOHANG__MASAN__3C69FB99" Association="Self.FK__tbGIOHANG__MASAN__3C69FB99">
+            <End Role="tbSANPHAM" EntitySet="tbSANPHAM" />
+            <End Role="tbGIOHANG" EntitySet="tbGIOHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbHOADON__MAKHAC__34C8D9D1" Association="Self.FK__tbHOADON__MAKHAC__34C8D9D1">
+            <End Role="tbKHACHHANG" EntitySet="tbKHACHHANG" />
+            <End Role="tbHOADON" EntitySet="tbHOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbKHACHHA__MAKHA__2D27B809" Association="Self.FK__tbKHACHHA__MAKHA__2D27B809">
+            <End Role="tbNGUOIDUNG" EntitySet="tbNGUOIDUNG" />
+            <End Role="tbKHACHHANG" EntitySet="tbKHACHHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbNHANVIE__MANHA__2A4B4B5E" Association="Self.FK__tbNHANVIE__MANHA__2A4B4B5E">
+            <End Role="tbNGUOIDUNG" EntitySet="tbNGUOIDUNG" />
+            <End Role="tbNHANVIEN" EntitySet="tbNHANVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbNHANVIE__MAPHO__29572725" Association="Self.FK__tbNHANVIE__MAPHO__29572725">
+            <End Role="tbPHONGBAN" EntitySet="tbPHONGBAN" />
+            <End Role="tbNHANVIEN" EntitySet="tbNHANVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbSANPHAM__MADAN__31EC6D26" Association="Self.FK__tbSANPHAM__MADAN__31EC6D26">
+            <End Role="tbDANHMUC" EntitySet="tbDANHMUC" />
+            <End Role="tbSANPHAM" EntitySet="tbSANPHAM" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbMiniShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbBAIDANG">
+          <Key>
+            <PropertyRef Name="MABAIDANG" />
+          </Key>
+          <Property Name="MABAIDANG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIEUDE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NOIDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HINHANH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NGUOIDANG" Type="Int32" />
+          <Property Name="NGAYDANG" Type="DateTime" Precision="0" />
+          <Property Name="NGAYBATDAU" Type="DateTime" Precision="0" />
+          <Property Name="NGAYKETTHUC" Type="DateTime" Precision="0" />
+          <Property Name="MACHUYENMUC" Type="Int32" />
+          <NavigationProperty Name="tbCHUYENMUC" Relationship="Self.FK__tbBAIDANG__MACHU__412EB0B6" FromRole="tbBAIDANG" ToRole="tbCHUYENMUC" />
+          <NavigationProperty Name="tbNHANVIEN" Relationship="Self.FK__tbBAIDANG__NGUOI__4222D4EF" FromRole="tbBAIDANG" ToRole="tbNHANVIEN" />
+        </EntityType>
+        <EntityType Name="tbCHITIETHOADON">
+          <Key>
+            <PropertyRef Name="MACHITIET" />
+          </Key>
+          <Property Name="MACHITIET" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MASANPHAM" Type="Int32" />
+          <Property Name="HD_SOLUONG" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="HD_DONGIA" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="MAHOADON" Type="Int32" />
+          <NavigationProperty Name="tbHOADON" Relationship="Self.FK__tbCHITIET__MAHOA__38996AB5" FromRole="tbCHITIETHOADON" ToRole="tbHOADON" />
+          <NavigationProperty Name="tbSANPHAM" Relationship="Self.FK__tbCHITIET__MASAN__37A5467C" FromRole="tbCHITIETHOADON" ToRole="tbSANPHAM" />
+        </EntityType>
+        <EntityType Name="tbCHUYENMUC">
+          <Key>
+            <PropertyRef Name="MACHUYENMUC" />
+          </Key>
+          <Property Name="MACHUYENMUC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENCHUYENMUC" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbBAIDANGs" Relationship="Self.FK__tbBAIDANG__MACHU__412EB0B6" FromRole="tbCHUYENMUC" ToRole="tbBAIDANG" />
+        </EntityType>
+        <EntityType Name="tbDANHMUC">
+          <Key>
+            <PropertyRef Name="MADANHMUC" />
+          </Key>
+          <Property Name="MADANHMUC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENDANHMUC" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbSANPHAMs" Relationship="Self.FK__tbSANPHAM__MADAN__31EC6D26" FromRole="tbDANHMUC" ToRole="tbSANPHAM" />
+        </EntityType>
+        <EntityType Name="tbGIOHANG">
+          <Key>
+            <PropertyRef Name="MAGIOHANG" />
+          </Key>
+          <Property Name="MAGIOHANG" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MAKHACHHANG" Type="Int32" />
+          <Property Name="MASANPHAM" Type="Int32" />
+          <Property Name="SOLUONG" Type="Int32" />
+          <Property Name="DONGIA" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="tbKHACHHANG" Relationship="Self.FK__tbGIOHANG__MAKHA__3B75D760" FromRole="tbGIOHANG" ToRole="tbKHACHHANG" />
+          <NavigationProperty Name="tbSANPHAM" Relationship="Self.FK__tbGIOHANG__MASAN__3C69FB99" FromRole="tbGIOHANG" ToRole="tbSANPHAM" />
+        </EntityType>
+        <EntityType Name="tbHOADON">
+          <Key>
+            <PropertyRef Name="MAHOADON" />
+          </Key>
+          <Property Name="MAHOADON" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MAKHACHHANG" Type="Int32" />
+          <Property Name="NGAYTAO" Type="DateTime" Precision="0" />
+          <Property Name="TRANGTHAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbCHITIETHOADONs" Relationship="Self.FK__tbCHITIET__MAHOA__38996AB5" FromRole="tbHOADON" ToRole="tbCHITIETHOADON" />
+          <NavigationProperty Name="tbKHACHHANG" Relationship="Self.FK__tbHOADON__MAKHAC__34C8D9D1" FromRole="tbHOADON" ToRole="tbKHACHHANG" />
+        </EntityType>
+        <EntityType Name="tbKHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKHACHHANG" />
+          </Key>
+          <Property Name="MAKHACHHANG" Type="Int32" Nullable="false" />
+          <Property Name="HOTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+          <Property Name="GIOITINH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DIACHI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbGIOHANGs" Relationship="Self.FK__tbGIOHANG__MAKHA__3B75D760" FromRole="tbKHACHHANG" ToRole="tbGIOHANG" />
+          <NavigationProperty Name="tbHOADONs" Relationship="Self.FK__tbHOADON__MAKHAC__34C8D9D1" FromRole="tbKHACHHANG" ToRole="tbHOADON" />
+          <NavigationProperty Name="tbNGUOIDUNG" Relationship="Self.FK__tbKHACHHA__MAKHA__2D27B809" FromRole="tbKHACHHANG" ToRole="tbNGUOIDUNG" />
+        </EntityType>
+        <EntityType Name="tbNGUOIDUNG">
+          <Key>
+            <PropertyRef Name="MANGUOIDUNG" />
+          </Key>
+          <Property Name="MANGUOIDUNG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENDANGNHAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MATKHAU" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VAITRO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbKHACHHANG" Relationship="Self.FK__tbKHACHHA__MAKHA__2D27B809" FromRole="tbNGUOIDUNG" ToRole="tbKHACHHANG" />
+          <NavigationProperty Name="tbNHANVIEN" Relationship="Self.FK__tbNHANVIE__MANHA__2A4B4B5E" FromRole="tbNGUOIDUNG" ToRole="tbNHANVIEN" />
+        </EntityType>
+        <EntityType Name="tbNHANVIEN">
+          <Key>
+            <PropertyRef Name="MANHANVIEN" />
+          </Key>
+          <Property Name="MANHANVIEN" Type="Int32" Nullable="false" />
+          <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+          <Property Name="GIOITINH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DIACHI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="MAPHONGBAN" Type="Int32" />
+          <NavigationProperty Name="tbBAIDANGs" Relationship="Self.FK__tbBAIDANG__NGUOI__4222D4EF" FromRole="tbNHANVIEN" ToRole="tbBAIDANG" />
+          <NavigationProperty Name="tbNGUOIDUNG" Relationship="Self.FK__tbNHANVIE__MANHA__2A4B4B5E" FromRole="tbNHANVIEN" ToRole="tbNGUOIDUNG" />
+          <NavigationProperty Name="tbPHONGBAN" Relationship="Self.FK__tbNHANVIE__MAPHO__29572725" FromRole="tbNHANVIEN" ToRole="tbPHONGBAN" />
+        </EntityType>
+        <EntityType Name="tbPHONGBAN">
+          <Key>
+            <PropertyRef Name="MAPHONGBAN" />
+          </Key>
+          <Property Name="MAPHONGBAN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENPHONGBAN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbNHANVIENs" Relationship="Self.FK__tbNHANVIE__MAPHO__29572725" FromRole="tbPHONGBAN" ToRole="tbNHANVIEN" />
+        </EntityType>
+        <EntityType Name="tbSANPHAM">
+          <Key>
+            <PropertyRef Name="MASANPHAM" />
+          </Key>
+          <Property Name="MASANPHAM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENSANPHAM" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DONGIA" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SOLUONG" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="HINHANH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MADANHMUC" Type="Int32" />
+          <Property Name="NGAYCAPNHAT" Type="DateTime" Precision="3" />
+          <Property Name="SOLUONGDABAN" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SOLUONGTOITHIEU" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SOLUOTDANHGIA" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CHATLUONG" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="tbCHITIETHOADONs" Relationship="Self.FK__tbCHITIET__MASAN__37A5467C" FromRole="tbSANPHAM" ToRole="tbCHITIETHOADON" />
+          <NavigationProperty Name="tbDANHMUC" Relationship="Self.FK__tbSANPHAM__MADAN__31EC6D26" FromRole="tbSANPHAM" ToRole="tbDANHMUC" />
+          <NavigationProperty Name="tbGIOHANGs" Relationship="Self.FK__tbGIOHANG__MASAN__3C69FB99" FromRole="tbSANPHAM" ToRole="tbGIOHANG" />
+        </EntityType>
+        <Association Name="FK__tbBAIDANG__MACHU__412EB0B6">
+          <End Role="tbCHUYENMUC" Type="Self.tbCHUYENMUC" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbBAIDANG" Type="Self.tbBAIDANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCHUYENMUC">
+              <PropertyRef Name="MACHUYENMUC" />
+            </Principal>
+            <Dependent Role="tbBAIDANG">
+              <PropertyRef Name="MACHUYENMUC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbBAIDANG__NGUOI__4222D4EF">
+          <End Role="tbNHANVIEN" Type="Self.tbNHANVIEN" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbBAIDANG" Type="Self.tbBAIDANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNHANVIEN">
+              <PropertyRef Name="MANHANVIEN" />
+            </Principal>
+            <Dependent Role="tbBAIDANG">
+              <PropertyRef Name="NGUOIDANG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbCHITIET__MAHOA__38996AB5">
+          <End Role="tbHOADON" Type="Self.tbHOADON" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbCHITIETHOADON" Type="Self.tbCHITIETHOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbHOADON">
+              <PropertyRef Name="MAHOADON" />
+            </Principal>
+            <Dependent Role="tbCHITIETHOADON">
+              <PropertyRef Name="MAHOADON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbCHITIET__MASAN__37A5467C">
+          <End Role="tbSANPHAM" Type="Self.tbSANPHAM" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbCHITIETHOADON" Type="Self.tbCHITIETHOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSANPHAM">
+              <PropertyRef Name="MASANPHAM" />
+            </Principal>
+            <Dependent Role="tbCHITIETHOADON">
+              <PropertyRef Name="MASANPHAM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbSANPHAM__MADAN__31EC6D26">
+          <End Role="tbDANHMUC" Type="Self.tbDANHMUC" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbSANPHAM" Type="Self.tbSANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDANHMUC">
+              <PropertyRef Name="MADANHMUC" />
+            </Principal>
+            <Dependent Role="tbSANPHAM">
+              <PropertyRef Name="MADANHMUC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbGIOHANG__MAKHA__3B75D760">
+          <End Role="tbKHACHHANG" Type="Self.tbKHACHHANG" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbGIOHANG" Type="Self.tbGIOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbKHACHHANG">
+              <PropertyRef Name="MAKHACHHANG" />
+            </Principal>
+            <Dependent Role="tbGIOHANG">
+              <PropertyRef Name="MAKHACHHANG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbGIOHANG__MASAN__3C69FB99">
+          <End Role="tbSANPHAM" Type="Self.tbSANPHAM" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbGIOHANG" Type="Self.tbGIOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSANPHAM">
+              <PropertyRef Name="MASANPHAM" />
+            </Principal>
+            <Dependent Role="tbGIOHANG">
+              <PropertyRef Name="MASANPHAM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbHOADON__MAKHAC__34C8D9D1">
+          <End Role="tbKHACHHANG" Type="Self.tbKHACHHANG" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbHOADON" Type="Self.tbHOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbKHACHHANG">
+              <PropertyRef Name="MAKHACHHANG" />
+            </Principal>
+            <Dependent Role="tbHOADON">
+              <PropertyRef Name="MAKHACHHANG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbKHACHHA__MAKHA__2D27B809">
+          <End Role="tbNGUOIDUNG" Type="Self.tbNGUOIDUNG" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbKHACHHANG" Type="Self.tbKHACHHANG" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbNGUOIDUNG">
+              <PropertyRef Name="MANGUOIDUNG" />
+            </Principal>
+            <Dependent Role="tbKHACHHANG">
+              <PropertyRef Name="MAKHACHHANG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbNHANVIE__MANHA__2A4B4B5E">
+          <End Role="tbNGUOIDUNG" Type="Self.tbNGUOIDUNG" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbNHANVIEN" Type="Self.tbNHANVIEN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbNGUOIDUNG">
+              <PropertyRef Name="MANGUOIDUNG" />
+            </Principal>
+            <Dependent Role="tbNHANVIEN">
+              <PropertyRef Name="MANHANVIEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbNHANVIE__MAPHO__29572725">
+          <End Role="tbPHONGBAN" Type="Self.tbPHONGBAN" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbNHANVIEN" Type="Self.tbNHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPHONGBAN">
+              <PropertyRef Name="MAPHONGBAN" />
+            </Principal>
+            <Dependent Role="tbNHANVIEN">
+              <PropertyRef Name="MAPHONGBAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbMiniShopEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbBAIDANGs" EntityType="Self.tbBAIDANG" />
+          <EntitySet Name="tbCHITIETHOADONs" EntityType="Self.tbCHITIETHOADON" />
+          <EntitySet Name="tbCHUYENMUCs" EntityType="Self.tbCHUYENMUC" />
+          <EntitySet Name="tbDANHMUCs" EntityType="Self.tbDANHMUC" />
+          <EntitySet Name="tbGIOHANGs" EntityType="Self.tbGIOHANG" />
+          <EntitySet Name="tbHOADONs" EntityType="Self.tbHOADON" />
+          <EntitySet Name="tbKHACHHANGs" EntityType="Self.tbKHACHHANG" />
+          <EntitySet Name="tbNGUOIDUNGs" EntityType="Self.tbNGUOIDUNG" />
+          <EntitySet Name="tbNHANVIENs" EntityType="Self.tbNHANVIEN" />
+          <EntitySet Name="tbPHONGBANs" EntityType="Self.tbPHONGBAN" />
+          <EntitySet Name="tbSANPHAMs" EntityType="Self.tbSANPHAM" />
+          <AssociationSet Name="FK__tbBAIDANG__MACHU__412EB0B6" Association="Self.FK__tbBAIDANG__MACHU__412EB0B6">
+            <End Role="tbCHUYENMUC" EntitySet="tbCHUYENMUCs" />
+            <End Role="tbBAIDANG" EntitySet="tbBAIDANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbBAIDANG__NGUOI__4222D4EF" Association="Self.FK__tbBAIDANG__NGUOI__4222D4EF">
+            <End Role="tbNHANVIEN" EntitySet="tbNHANVIENs" />
+            <End Role="tbBAIDANG" EntitySet="tbBAIDANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbCHITIET__MAHOA__38996AB5" Association="Self.FK__tbCHITIET__MAHOA__38996AB5">
+            <End Role="tbHOADON" EntitySet="tbHOADONs" />
+            <End Role="tbCHITIETHOADON" EntitySet="tbCHITIETHOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbCHITIET__MASAN__37A5467C" Association="Self.FK__tbCHITIET__MASAN__37A5467C">
+            <End Role="tbSANPHAM" EntitySet="tbSANPHAMs" />
+            <End Role="tbCHITIETHOADON" EntitySet="tbCHITIETHOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbSANPHAM__MADAN__31EC6D26" Association="Self.FK__tbSANPHAM__MADAN__31EC6D26">
+            <End Role="tbDANHMUC" EntitySet="tbDANHMUCs" />
+            <End Role="tbSANPHAM" EntitySet="tbSANPHAMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbGIOHANG__MAKHA__3B75D760" Association="Self.FK__tbGIOHANG__MAKHA__3B75D760">
+            <End Role="tbKHACHHANG" EntitySet="tbKHACHHANGs" />
+            <End Role="tbGIOHANG" EntitySet="tbGIOHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbGIOHANG__MASAN__3C69FB99" Association="Self.FK__tbGIOHANG__MASAN__3C69FB99">
+            <End Role="tbSANPHAM" EntitySet="tbSANPHAMs" />
+            <End Role="tbGIOHANG" EntitySet="tbGIOHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbHOADON__MAKHAC__34C8D9D1" Association="Self.FK__tbHOADON__MAKHAC__34C8D9D1">
+            <End Role="tbKHACHHANG" EntitySet="tbKHACHHANGs" />
+            <End Role="tbHOADON" EntitySet="tbHOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbKHACHHA__MAKHA__2D27B809" Association="Self.FK__tbKHACHHA__MAKHA__2D27B809">
+            <End Role="tbNGUOIDUNG" EntitySet="tbNGUOIDUNGs" />
+            <End Role="tbKHACHHANG" EntitySet="tbKHACHHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbNHANVIE__MANHA__2A4B4B5E" Association="Self.FK__tbNHANVIE__MANHA__2A4B4B5E">
+            <End Role="tbNGUOIDUNG" EntitySet="tbNGUOIDUNGs" />
+            <End Role="tbNHANVIEN" EntitySet="tbNHANVIENs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbNHANVIE__MAPHO__29572725" Association="Self.FK__tbNHANVIE__MAPHO__29572725">
+            <End Role="tbPHONGBAN" EntitySet="tbPHONGBANs" />
+            <End Role="tbNHANVIEN" EntitySet="tbNHANVIENs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbMiniShopModelStoreContainer" CdmEntityContainer="dbMiniShopEntities1">
+          <EntitySetMapping Name="tbBAIDANGs">
+            <EntityTypeMapping TypeName="dbMiniShopModel.tbBAIDANG">
+              <MappingFragment StoreEntitySet="tbBAIDANG">
+                <ScalarProperty Name="MABAIDANG" ColumnName="MABAIDANG" />
+                <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
+                <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="NGUOIDANG" ColumnName="NGUOIDANG" />
+                <ScalarProperty Name="NGAYDANG" ColumnName="NGAYDANG" />
+                <ScalarProperty Name="NGAYBATDAU" ColumnName="NGAYBATDAU" />
+                <ScalarProperty Name="NGAYKETTHUC" ColumnName="NGAYKETTHUC" />
+                <ScalarProperty Name="MACHUYENMUC" ColumnName="MACHUYENMUC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbCHITIETHOADONs">
+            <EntityTypeMapping TypeName="dbMiniShopModel.tbCHITIETHOADON">
+              <MappingFragment StoreEntitySet="tbCHITIETHOADON">
+                <ScalarProperty Name="MACHITIET" ColumnName="MACHITIET" />
+                <ScalarProperty Name="MASANPHAM" ColumnName="MASANPHAM" />
+                <ScalarProperty Name="HD_SOLUONG" ColumnName="HD_SOLUONG" />
+                <ScalarProperty Name="HD_DONGIA" ColumnName="HD_DONGIA" />
+                <ScalarProperty Name="MAHOADON" ColumnName="MAHOADON" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbCHUYENMUCs">
+            <EntityTypeMapping TypeName="dbMiniShopModel.tbCHUYENMUC">
+              <MappingFragment StoreEntitySet="tbCHUYENMUC">
+                <ScalarProperty Name="MACHUYENMUC" ColumnName="MACHUYENMUC" />
+                <ScalarProperty Name="TENCHUYENMUC" ColumnName="TENCHUYENMUC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbDANHMUCs">
+            <EntityTypeMapping TypeName="dbMiniShopModel.tbDANHMUC">
+              <MappingFragment StoreEntitySet="tbDANHMUC">
+                <ScalarProperty Name="MADANHMUC" ColumnName="MADANHMUC" />
+                <ScalarProperty Name="TENDANHMUC" ColumnName="TENDANHMUC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbGIOHANGs">
+            <EntityTypeMapping TypeName="dbMiniShopModel.tbGIOHANG">
+              <MappingFragment StoreEntitySet="tbGIOHANG">
+                <ScalarProperty Name="MAGIOHANG" ColumnName="MAGIOHANG" />
+                <ScalarProperty Name="MAKHACHHANG" ColumnName="MAKHACHHANG" />
+                <ScalarProperty Name="MASANPHAM" ColumnName="MASANPHAM" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbHOADONs">
+            <EntityTypeMapping TypeName="dbMiniShopModel.tbHOADON">
+              <MappingFragment StoreEntitySet="tbHOADON">
+                <ScalarProperty Name="MAHOADON" ColumnName="MAHOADON" />
+                <ScalarProperty Name="MAKHACHHANG" ColumnName="MAKHACHHANG" />
+                <ScalarProperty Name="NGAYTAO" ColumnName="NGAYTAO" />
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbKHACHHANGs">
+            <EntityTypeMapping TypeName="dbMiniShopModel.tbKHACHHANG">
+              <MappingFragment StoreEntitySet="tbKHACHHANG">
+                <ScalarProperty Name="MAKHACHHANG" ColumnName="MAKHACHHANG" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbNGUOIDUNGs">
+            <EntityTypeMapping TypeName="dbMiniShopModel.tbNGUOIDUNG">
+              <MappingFragment StoreEntitySet="tbNGUOIDUNG">
+                <ScalarProperty Name="MANGUOIDUNG" ColumnName="MANGUOIDUNG" />
+                <ScalarProperty Name="TENDANGNHAP" ColumnName="TENDANGNHAP" />
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="VAITRO" ColumnName="VAITRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbNHANVIENs">
+            <EntityTypeMapping TypeName="dbMiniShopModel.tbNHANVIEN">
+              <MappingFragment StoreEntitySet="tbNHANVIEN">
+                <ScalarProperty Name="MANHANVIEN" ColumnName="MANHANVIEN" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="MAPHONGBAN" ColumnName="MAPHONGBAN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPHONGBANs">
+            <EntityTypeMapping TypeName="dbMiniShopModel.tbPHONGBAN">
+              <MappingFragment StoreEntitySet="tbPHONGBAN">
+                <ScalarProperty Name="MAPHONGBAN" ColumnName="MAPHONGBAN" />
+                <ScalarProperty Name="TENPHONGBAN" ColumnName="TENPHONGBAN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbSANPHAMs">
+            <EntityTypeMapping TypeName="dbMiniShopModel.tbSANPHAM">
+              <MappingFragment StoreEntitySet="tbSANPHAM">
+                <ScalarProperty Name="MASANPHAM" ColumnName="MASANPHAM" />
+                <ScalarProperty Name="TENSANPHAM" ColumnName="TENSANPHAM" />
+                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+                <ScalarProperty Name="MADANHMUC" ColumnName="MADANHMUC" />
+                <ScalarProperty Name="NGAYCAPNHAT" ColumnName="NGAYCAPNHAT" />
+                <ScalarProperty Name="SOLUONGDABAN" ColumnName="SOLUONGDABAN" />
+                <ScalarProperty Name="SOLUONGTOITHIEU" ColumnName="SOLUONGTOITHIEU" />
+                <ScalarProperty Name="SOLUOTDANHGIA" ColumnName="SOLUOTDANHGIA" />
+                <ScalarProperty Name="CHATLUONG" ColumnName="CHATLUONG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,83 @@
+﻿﻿@model ThanhGiang_WebCuoiKi.Models.tbNGUOIDUNG
+
+@{
+    ViewBag.Title = "DangKy";
+}
+
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Login/Register</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="category.html">Login/Register</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+<!--================Login Box Area =================-->
+<section class="login_box_area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="login_box_img">
+                    <img class="img-fluid" src="/img/login.jpg" alt="">
+                    <div class="hover">
+                        <h4>New to our website?</h4>
+                        <p>There are advances being made in science and technology everyday, and a good example of this is the</p>
+                        <a class="primary-btn" href="DangNhap">Login</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="login_form_inner">
+                    <h3>Create Account</h3>
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "row login_form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="col-md-12 form-group">
+                            @Html.EditorFor(model => model.tbKHACHHANG.HOTEN, new { htmlAttributes = new { @class = "form-control", @id = "name", @name = "name", @placeholder = "Name", @onfocus = "this.placeholder = ''", @onblur = "this.placeholder = 'Name'" } })
+                            @Html.ValidationMessageFor(model => model.tbKHACHHANG.HOTEN, "", new { @class = "badge badge-danger" })
+                        </div>
+                        <div class="col-md-12 form-group">
+                            @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", @id = "name", @name = "name", @placeholder = "Email", @onfocus = "this.placeholder = ''", @onblur = "this.placeholder = 'Email'" } })
+                            @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "badge badge-danger" })
+                        </div>
+
+                        <div class="col-md-12 form-group">
+                            @Html.EditorFor(model => model.TENDANGNHAP, new { htmlAttributes = new { @class = "form-control", @id = "name", @name = "name", @placeholder = "Username", @onfocus = "this.placeholder = ''", @onblur = "this.placeholder = 'Username'" } })
+                            @Html.ValidationMessageFor(model => model.TENDANGNHAP, "", new { @class = "badge badge-danger" })
+                        </div>
+
+                        <div class="col-md-12 form-group">
+                            @Html.EditorFor(model => model.MATKHAU, new { htmlAttributes = new { @type = "password", @class = "form-control", @id = "name", @name = "name", @placeholder = "Password", @onfocus = "this.placeholder = ''", @onblur = "this.placeholder = 'Password'" } })
+                            @Html.ValidationMessageFor(model => model.MATKHAU, "", new { @class = "badge badge-danger" })
+                        </div>
+                        <div class="col-md-12 form-group">
+                            @Html.TextBox("Repeatpass", null, new { @type = "password", @class = "form-control", @id = "name", @name = "name", @placeholder = "Repeat again password", @onfocus = "this.placeholder = ''", @onblur = "this.placeholder = 'Repeat again password'" })
+                            @Html.ValidationMessageFor(model => model.MATKHAU, "", new { @class = "badge badge-danger" })
+                        </div>
+
+                        <div class="col-md-12 form-group">
+                            <div class="creat_account">
+                                <input type="checkbox" id="f-option2" name="selector">
+                                <label for="f-option2">I agree all statements in <a href="#" style="display: inline-block; text-decoration: underline;">Terms of service</a></label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 form-group">
+                            <input type="submit" value="Create" class="primary-btn" />
+                        </div>
+
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
