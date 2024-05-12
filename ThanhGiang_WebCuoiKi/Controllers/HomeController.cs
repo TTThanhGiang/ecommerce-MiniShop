@@ -27,6 +27,18 @@ namespace ThanhGiang_WebCuoiKi.Controllers
             return View("Index");
         }
 
+        public ActionResult ChiTietSanPham(decimal masanpham)
+        {
+            if(masanpham == 0)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+            tbSANPHAM tbsanpham = db.tbSANPHAMs.Find(masanpham);
+
+           
+            return View(tbsanpham);
+        }
+
         //HTTP get Home/DangNhap
         public ActionResult DangNhap()
         {
@@ -93,14 +105,8 @@ namespace ThanhGiang_WebCuoiKi.Controllers
                 tbKHACHHANG kh = new tbKHACHHANG(makhachhang, nguoidung.tbKHACHHANG.HOTEN, email);
                 db.tbKHACHHANGs.Add(kh);
                 db.SaveChanges();
-                }
-                
-
-
             }
-
             return View();
-
         }
     }
 }

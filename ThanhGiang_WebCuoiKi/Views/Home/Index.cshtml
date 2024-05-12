@@ -194,10 +194,10 @@
                 {
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
-                            <a href="@Url.Action("Detail", "TrangChu", new {id = @item.MASANPHAM })"><img class="img-fluid" src="~/img/product/@item.HINHANH" alt=""></a>
+                            <a href="@Url.Action("ChiTietSanPham", "Home", new {masanpham = @item.MASANPHAM })"><img class="img-fluid" src="~/img/product/@item.HINHANH" alt=""></a>
                             <div class="product-details">
                                 <h6>
-                                    @Html.ActionLink((String)(@item.TENSANPHAM), "Detail", new { id = @item.MASANPHAM })
+                                    @Html.ActionLink((String)(@item.TENSANPHAM), "ChiTietSanPham", new { masanpham = @item.MASANPHAM })
 
                                 </h6>
                                 <div class="price">
@@ -256,7 +256,7 @@
                             <img class="img-fluid" src="~/img/product/@item.HINHANH" alt="">
                             <div class="product-details">
                                 <h6>
-                                    @Html.ActionLink((String)(@item.TENSANPHAM), "Detail", new { id = @item.MASANPHAM })
+                                    @Html.ActionLink((String)(@item.TENSANPHAM), "ChiTietSanPham", new { masanpham = @item.MASANPHAM })
                                 </h6>
                                 <div class="price">
                                     <h6>$ @UInt32.Parse((@item.DONGIA - @item.DONGIA * 20 / 100) + "")</h6>
@@ -337,7 +337,7 @@
                                     <h6 class="l-through">$ @item.DONGIA</h6>
                                 </div>
                                 <h4>
-                                    @Html.ActionLink((String)(@item.TENSANPHAM), "Detail", new { id = @item.MASANPHAM })
+                                    @Html.ActionLink((String)(@item.TENSANPHAM), "ChiTietSanPham", new { masanpham = @item.MASANPHAM })
                                 </h4>
                                 <div class="add-bag d-flex align-items-center justify-content-center">
                                     <a class="add-btn" href="/TrangChu/AddToCart?id=@item.MASANPHAM"><span class="ti-bag"></span></a>
@@ -398,7 +398,7 @@
                             <div class="single-related-product d-flex">
                                 <a href="#"><img src="~/img/product/@item.HINHANH" alt="" width="80px" height="80px"></a>
                                 <div class="desc">
-                                    <a href="#" class="title">@Html.ActionLink((String)(@item.TENSANPHAM), "Detail", new { id = @item.MASANPHAM })</a>
+                                    <a href="#" class="title">@Html.ActionLink((String)(@item.TENSANPHAM), "ChiTietSanPham", new { masanpham = @item.MASANPHAM })</a>
                                     <div class="price">
                                         <h6>$@UInt32.Parse((@item.DONGIA - @item.DONGIA * 20 / 100) + "")</h6>
                                         <h6 class="l-through">$@item.DONGIA</h6>
@@ -406,7 +406,7 @@
                                 </div>
                             </div>
                         </div>
-                    }
+                    }   
                 </div>
             </div>
             <div class="col-lg-3">
