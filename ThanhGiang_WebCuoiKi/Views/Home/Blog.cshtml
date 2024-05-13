@@ -1,0 +1,105 @@
+﻿@model List<ThanhGiang_WebCuoiKi.Models.tbBAIDANG>
+@{
+    ViewBag.Title = "Blog";
+
+}
+@{
+    List<ThanhGiang_WebCuoiKi.Models.DanhMucBaiViet> danhMucBaiViet = ViewBag.DanhMucBaiViet;
+}
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Blog Page</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="category.html">Blog</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+<!--================Blog Categorie Area =================-->
+<!--================Blog Area =================-->
+<section class="ftco-section ftco-degree-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 order-lg-last ftco-animate">
+                <div class="row">
+                    @foreach (var blog in Model)
+                    {
+                        <div class="col-md-12 d-flex ftco-animate">
+                            <div class="blog-entry align-self-stretch d-md-flex">
+                                <img src="~/img/blog/@blog.HINHANH" alt="" class="block-20">
+                                <div class="text d-block pl-md-4">
+                                    <div class="meta mb-3">
+                                        @{
+                                            DateTime ngaydang = (DateTime)blog.NGAYDANG;
+                                            String noidung = blog.NOIDUNG.Length > 100 ? blog.NOIDUNG.Substring(0, 100) + "..." : blog.NOIDUNG;
+                                        }
+                                        <div><a href="#">@ngaydang.ToString("dd/MM/yyyy")</a></div>
+                                        <div><a href="#">@blog.tbNHANVIEN.HOTEN</a></div>
+                                        <div><a href="#"><i class="lnr lnr-bubble"></i> 3</a></div>
+                                    </div>
+                                    <h3 class="heading"><a href="#">@blog.TIEUDE</a></h3>
+                                    <p>@noidung</p>
+                                    <p><a href="blog-single.html" class="btn btn-primary py-2 px-3">Read more</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div> <!-- .col-md-8 -->
+            <div class="col-lg-4 sidebar ftco-animate">
+                <div class="sidebar-box">
+                    <form id="searchForm" action="@Url.Action("TimKiemBlog", "Home")" method="post" class="search-form">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Type a keyword and hit enter" name="text" id="searchInput">
+                                <i class="lnr lnr-magnifier" id="searchIcon"></i>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading">Categories</h3>
+                    <ul class="categories">
+                        @{ 
+                            int count = 0;
+                            foreach(var baiviet in danhMucBaiViet) {
+                                count += baiviet.SoLuongBaiViet;
+                            }
+                        }
+                        <li><a href="@Url.Action("Blog", "Home")">All <span>(@count)</span></a></li>
+                        @foreach (var item in danhMucBaiViet)
+                        {
+                            <li><a href="@Url.Action("Blog", "Home", new {machuyenmuc=@item.MaChuyenMuc })">@item.TenChuyenMuc <span>(@item.SoLuongBaiViet)</span></a></li>
+                        }
+
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section> <!-- .section -->
+<script>
+    function sendData() {
+        document.getElementById("searchForm").submit();
+    }
+
+    // Sự kiện click cho biểu tượng
+    document.getElementById("searchIcon").addEventListener("click", function () {
+        sendData();
+    });
+
+    // Sự kiện keypress cho ô input
+    document.getElementById("searchInput").addEventListener("keypress", function (event) {
+        // Kiểm tra nếu phím nhấn là phím Enter (mã 13)
+        if (event.keyCode === 13) {
+            sendData();
+        }
+    });
+</script>

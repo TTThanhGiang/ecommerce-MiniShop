@@ -19,6 +19,9 @@
     <!--
         CSS
         ============================================= -->
+    <link rel="stylesheet" href="~/Content/csss/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
     <link rel="stylesheet" href="~/Content//css/linearicons.css">
     <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/Content/css/themify-icons.css">
@@ -30,6 +33,9 @@
     <link rel="stylesheet" href="~/Content/css/ion.rangeSlider.skinFlat.css" />
     <link rel="stylesheet" href="~/Content/css/magnific-popup.css">
     <link rel="stylesheet" href="~/Content/css/main.css">
+    <link rel="stylesheet" href="~/Content/css/blog.css">
+
+
 </head>
 <body>
     @{ var kh = Session["KhachHang"] as ThanhGiang_WebCuoiKi.Models.tbNGUOIDUNG;}
@@ -65,7 +71,7 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                    aria-expanded="false">Blog</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Blog","Home")">Blog</a></li>
                                     <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
                                 </ul>
                             </li>

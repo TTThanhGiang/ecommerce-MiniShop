@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ThanhGiang_WebCuoiKi.Models;
+using ThanhGiang_WebCuoiKi.App_Start;
 
 namespace ThanhGiang_WebCuoiKi.Controllers
 {
@@ -179,6 +180,47 @@ namespace ThanhGiang_WebCuoiKi.Controllers
                 }
             }
             return RedirectToAction("Cart");
+        }
+
+        public ActionResult Blog(int? machuyenmuc)
+        {
+            List<tbBAIDANG> listbaidang;
+            if (TempData["DanhSachTimKiem"] != null)
+            {
+                listbaidang = TempData["DanhSachTimKiem"] as List<tbBAIDANG>;
+                TempData.Remove("DanhSachTimKiem"); // Xóa TempData sau khi sử dụng để tránh lặp lại dữ liệu
+            }
+            else
+            {
+                if (machuyenmuc != null)
+                {
+                    listbaidang = db.tbBAIDANGs.Where(bd => bd.MACHUYENMUC == machuyenmuc).ToList();
+                }
+                else
+                {
+                    listbaidang = db.tbBAIDANGs.ToList();
+                }
+            }
+
+            var danhMucBaiViet = db.Database.SqlQuery<DanhMucBaiViet>(
+                "SELECT d.MACHUYENMUC,d.TENCHUYENMUC, COUNT(s.MABAIDANG) AS SoLuongBaiViet " +
+                "FROM tbCHUYENMUC d " +
+                "LEFT JOIN tbBAIDANG s ON d.MACHUYENMUC = s.MACHUYENMUC " +
+                "GROUP BY d.MACHUYENMUC,d.TENCHUYENMUC"
+                )
+            .ToList();
+
+            
+            ViewBag.DanhMucBaiViet= danhMucBaiViet;
+            return View(listbaidang);
+        }
+        [HttpPost]
+        public ActionResult TimKiemBlog(string text)
+        {
+            string input = text.ToLower();
+            var ds = db.tbBAIDANGs.Where(bd => bd.TIEUDE.ToLower().Contains(input) || bd.NOIDUNG.ToLower().Contains(input) || bd.tbCHUYENMUC.TENCHUYENMUC.Contains(input)).ToList();
+            TempData["DanhSachTimKiem"] = ds;
+            return RedirectToAction("Blog");
         }
     }
 }

@@ -128,10 +128,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\TelexHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DanhMucBaiViet.cs" />
     <Compile Include="Models\MiniShopModels.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -584,11 +586,8 @@
     <Content Include="Content\admin\assets\vendor\timeline\img\cd-icon-picture.svg" />
     <Content Include="Content\admin\assets\vendor\timeline\js\main.js" />
     <Content Include="Content\admin\assets\vendor\vector-map\jqvmap.css" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\availability-calendar.css" />
+    <Content Include="Content\css\blog.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\ion.rangeSlider.css" />
@@ -629,6 +628,11 @@
     <Content Include="img\blog\causes\causes-2.jpg" />
     <Content Include="img\blog\causes\causes-3.jpg" />
     <Content Include="img\blog\feature-img1.jpg" />
+    <Content Include="img\blog\image_1.jpg" />
+    <Content Include="img\blog\image_2.jpg" />
+    <Content Include="img\blog\image_3.jpg" />
+    <Content Include="img\blog\image_5.jpg" />
+    <Content Include="img\blog\image_6.jpg" />
     <Content Include="img\blog\latest-post\l-post-1.jpg" />
     <Content Include="img\blog\latest-post\l-post-2.jpg" />
     <Content Include="img\blog\latest-post\l-post-3.jpg" />
@@ -695,6 +699,7 @@
     <Content Include="img\i6.jpg" />
     <Content Include="img\i7.jpg" />
     <Content Include="img\i8.jpg" />
+    <Content Include="img\image_1.jpg" />
     <Content Include="img\l1.jpg" />
     <Content Include="img\l2.jpg" />
     <Content Include="img\l3.jpg" />
@@ -927,6 +932,7 @@
     <Content Include="Views\Home\DangKy.cshtml" />
     <Content Include="Views\Home\ChiTietSanPham.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
+    <Content Include="Views\Home\Blog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -936,10 +942,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
