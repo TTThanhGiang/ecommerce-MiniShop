@@ -46,11 +46,18 @@
                         <div class="col-md-12 form-group">
                             @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", @id = "name", @name = "name", @placeholder = "Email", @onfocus = "this.placeholder = ''", @onblur = "this.placeholder = 'Email'" } })
                             @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "badge badge-danger" })
+                            @if(ViewBag.Message != null) { 
+                                <p style="font-size:small; text-align:left; padding-left:15px;height:fit-content; margin-block-end:0px">@ViewBag.Message</p>
+                            }
                         </div>
 
                         <div class="col-md-12 form-group">
                             @Html.EditorFor(model => model.TENDANGNHAP, new { htmlAttributes = new { @class = "form-control", @id = "name", @name = "name", @placeholder = "Username", @onfocus = "this.placeholder = ''", @onblur = "this.placeholder = 'Username'" } })
                             @Html.ValidationMessageFor(model => model.TENDANGNHAP, "", new { @class = "badge badge-danger" })
+                            @if (ViewBag.Checkusername != null)
+                            {
+                                <p style="font-size:small; text-align:left; padding-left:15px;height:fit-content; margin-block-end:0px">@ViewBag.Checkusername</p>
+                            }
                         </div>
 
                         <div class="col-md-12 form-group">

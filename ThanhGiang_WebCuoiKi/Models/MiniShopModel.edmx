@@ -23,7 +23,7 @@
           <Key>
             <PropertyRef Name="MACHITIET" />
           </Key>
-          <Property Name="MACHITIET" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MACHITIET" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MASANPHAM" Type="int" />
           <Property Name="HD_SOLUONG" Type="numeric" Precision="18" Scale="0" />
           <Property Name="HD_DONGIA" Type="numeric" Precision="18" Scale="0" />
@@ -73,6 +73,8 @@
           <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
           <Property Name="DIACHI" Type="nvarchar" MaxLength="200" />
           <Property Name="SDT" Type="varchar" MaxLength="11" />
+          <Property Name="HINHANH" Type="varchar(max)" />
+          <Property Name="TIEUSU" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbNGUOIDUNG">
           <Key>
@@ -148,7 +150,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbCHITIET__MAHOA__38996AB5">
+        <Association Name="FK__tbCHITIET__MAHOA__4CA06362">
           <End Role="tbHOADON" Type="Self.tbHOADON" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -162,7 +164,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbCHITIET__MASAN__37A5467C">
+        <Association Name="FK__tbCHITIET__MASAN__4BAC3F29">
           <End Role="tbSANPHAM" Type="Self.tbSANPHAM" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -294,11 +296,11 @@
             <End Role="tbNHANVIEN" EntitySet="tbNHANVIEN" />
             <End Role="tbBAIDANG" EntitySet="tbBAIDANG" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbCHITIET__MAHOA__38996AB5" Association="Self.FK__tbCHITIET__MAHOA__38996AB5">
+          <AssociationSet Name="FK__tbCHITIET__MAHOA__4CA06362" Association="Self.FK__tbCHITIET__MAHOA__4CA06362">
             <End Role="tbHOADON" EntitySet="tbHOADON" />
             <End Role="tbCHITIETHOADON" EntitySet="tbCHITIETHOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbCHITIET__MASAN__37A5467C" Association="Self.FK__tbCHITIET__MASAN__37A5467C">
+          <AssociationSet Name="FK__tbCHITIET__MASAN__4BAC3F29" Association="Self.FK__tbCHITIET__MASAN__4BAC3F29">
             <End Role="tbSANPHAM" EntitySet="tbSANPHAM" />
             <End Role="tbCHITIETHOADON" EntitySet="tbCHITIETHOADON" />
           </AssociationSet>
@@ -356,13 +358,13 @@
           <Key>
             <PropertyRef Name="MACHITIET" />
           </Key>
-          <Property Name="MACHITIET" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MACHITIET" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MASANPHAM" Type="Int32" />
           <Property Name="HD_SOLUONG" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="HD_DONGIA" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="MAHOADON" Type="Int32" />
-          <NavigationProperty Name="tbHOADON" Relationship="Self.FK__tbCHITIET__MAHOA__38996AB5" FromRole="tbCHITIETHOADON" ToRole="tbHOADON" />
-          <NavigationProperty Name="tbSANPHAM" Relationship="Self.FK__tbCHITIET__MASAN__37A5467C" FromRole="tbCHITIETHOADON" ToRole="tbSANPHAM" />
+          <NavigationProperty Name="tbHOADON" Relationship="Self.FK__tbCHITIET__MAHOA__4CA06362" FromRole="tbCHITIETHOADON" ToRole="tbHOADON" />
+          <NavigationProperty Name="tbSANPHAM" Relationship="Self.FK__tbCHITIET__MASAN__4BAC3F29" FromRole="tbCHITIETHOADON" ToRole="tbSANPHAM" />
         </EntityType>
         <EntityType Name="tbCHUYENMUC">
           <Key>
@@ -400,7 +402,7 @@
           <Property Name="MAKHACHHANG" Type="Int32" />
           <Property Name="NGAYTAO" Type="DateTime" Precision="0" />
           <Property Name="TRANGTHAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="tbCHITIETHOADONs" Relationship="Self.FK__tbCHITIET__MAHOA__38996AB5" FromRole="tbHOADON" ToRole="tbCHITIETHOADON" />
+          <NavigationProperty Name="tbCHITIETHOADONs" Relationship="Self.FK__tbCHITIET__MAHOA__4CA06362" FromRole="tbHOADON" ToRole="tbCHITIETHOADON" />
           <NavigationProperty Name="tbKHACHHANG" Relationship="Self.FK__tbHOADON__MAKHAC__34C8D9D1" FromRole="tbHOADON" ToRole="tbKHACHHANG" />
         </EntityType>
         <EntityType Name="tbKHACHHANG">
@@ -414,6 +416,8 @@
           <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DIACHI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="SDT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="HINHANH" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TIEUSU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbGIOHANGs" Relationship="Self.FK__tbGIOHANG__MAKHA__3B75D760" FromRole="tbKHACHHANG" ToRole="tbGIOHANG" />
           <NavigationProperty Name="tbHOADONs" Relationship="Self.FK__tbHOADON__MAKHAC__34C8D9D1" FromRole="tbKHACHHANG" ToRole="tbHOADON" />
           <NavigationProperty Name="tbNGUOIDUNG" Relationship="Self.FK__tbKHACHHA__MAKHA__2D27B809" FromRole="tbKHACHHANG" ToRole="tbNGUOIDUNG" />
@@ -469,7 +473,7 @@
           <Property Name="SOLUONGTOITHIEU" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="SOLUOTDANHGIA" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="CHATLUONG" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="tbCHITIETHOADONs" Relationship="Self.FK__tbCHITIET__MASAN__37A5467C" FromRole="tbSANPHAM" ToRole="tbCHITIETHOADON" />
+          <NavigationProperty Name="tbCHITIETHOADONs" Relationship="Self.FK__tbCHITIET__MASAN__4BAC3F29" FromRole="tbSANPHAM" ToRole="tbCHITIETHOADON" />
           <NavigationProperty Name="tbDANHMUC" Relationship="Self.FK__tbSANPHAM__MADAN__31EC6D26" FromRole="tbSANPHAM" ToRole="tbDANHMUC" />
           <NavigationProperty Name="tbGIOHANGs" Relationship="Self.FK__tbGIOHANG__MASAN__3C69FB99" FromRole="tbSANPHAM" ToRole="tbGIOHANG" />
         </EntityType>
@@ -501,7 +505,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbCHITIET__MAHOA__38996AB5">
+        <Association Name="FK__tbCHITIET__MAHOA__4CA06362">
           <End Role="tbHOADON" Type="Self.tbHOADON" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -515,7 +519,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbCHITIET__MASAN__37A5467C">
+        <Association Name="FK__tbCHITIET__MASAN__4BAC3F29">
           <End Role="tbSANPHAM" Type="Self.tbSANPHAM" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -627,7 +631,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dbMiniShopEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="dbMiniShopEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbBAIDANGs" EntityType="Self.tbBAIDANG" />
           <EntitySet Name="tbCHITIETHOADONs" EntityType="Self.tbCHITIETHOADON" />
           <EntitySet Name="tbCHUYENMUCs" EntityType="Self.tbCHUYENMUC" />
@@ -647,11 +651,11 @@
             <End Role="tbNHANVIEN" EntitySet="tbNHANVIENs" />
             <End Role="tbBAIDANG" EntitySet="tbBAIDANGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbCHITIET__MAHOA__38996AB5" Association="Self.FK__tbCHITIET__MAHOA__38996AB5">
+          <AssociationSet Name="FK__tbCHITIET__MAHOA__4CA06362" Association="Self.FK__tbCHITIET__MAHOA__4CA06362">
             <End Role="tbHOADON" EntitySet="tbHOADONs" />
             <End Role="tbCHITIETHOADON" EntitySet="tbCHITIETHOADONs" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbCHITIET__MASAN__37A5467C" Association="Self.FK__tbCHITIET__MASAN__37A5467C">
+          <AssociationSet Name="FK__tbCHITIET__MASAN__4BAC3F29" Association="Self.FK__tbCHITIET__MASAN__4BAC3F29">
             <End Role="tbSANPHAM" EntitySet="tbSANPHAMs" />
             <End Role="tbCHITIETHOADON" EntitySet="tbCHITIETHOADONs" />
           </AssociationSet>
@@ -689,7 +693,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dbMiniShopModelStoreContainer" CdmEntityContainer="dbMiniShopEntities1">
+        <EntityContainerMapping StorageEntityContainer="dbMiniShopModelStoreContainer" CdmEntityContainer="dbMiniShopEntities2">
           <EntitySetMapping Name="tbBAIDANGs">
             <EntityTypeMapping TypeName="dbMiniShopModel.tbBAIDANG">
               <MappingFragment StoreEntitySet="tbBAIDANG">
@@ -763,6 +767,8 @@
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="TIEUSU" ColumnName="TIEUSU" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

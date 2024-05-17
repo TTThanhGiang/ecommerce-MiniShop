@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -134,55 +134,55 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DanhMucBaiViet.cs" />
-    <Compile Include="Models\MiniShopModels.Context.cs">
+    <Compile Include="Models\MiniShopModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MiniShopModels.Context.tt</DependentUpon>
+      <DependentUpon>MiniShopModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MiniShopModels.cs">
+    <Compile Include="Models\MiniShopModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MiniShopModels.tt</DependentUpon>
+      <DependentUpon>MiniShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MiniShopModels.Designer.cs">
+    <Compile Include="Models\MiniShopModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MiniShopModels.edmx</DependentUpon>
+      <DependentUpon>MiniShopModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelFormLogin.cs" />
     <Compile Include="Models\ModelSanpham.cs" />
     <Compile Include="Models\tbBAIDANG.cs">
-      <DependentUpon>MiniShopModels.tt</DependentUpon>
+      <DependentUpon>MiniShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbCHITIETHOADON.cs">
-      <DependentUpon>MiniShopModels.tt</DependentUpon>
+      <DependentUpon>MiniShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbCHUYENMUC.cs">
-      <DependentUpon>MiniShopModels.tt</DependentUpon>
+      <DependentUpon>MiniShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbDANHMUC.cs">
-      <DependentUpon>MiniShopModels.tt</DependentUpon>
+      <DependentUpon>MiniShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbGIOHANG.cs">
-      <DependentUpon>MiniShopModels.tt</DependentUpon>
+      <DependentUpon>MiniShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbHOADON.cs">
-      <DependentUpon>MiniShopModels.tt</DependentUpon>
+      <DependentUpon>MiniShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbKHACHHANG.cs">
-      <DependentUpon>MiniShopModels.tt</DependentUpon>
+      <DependentUpon>MiniShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbNGUOIDUNG.cs">
-      <DependentUpon>MiniShopModels.tt</DependentUpon>
+      <DependentUpon>MiniShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbNHANVIEN.cs">
-      <DependentUpon>MiniShopModels.tt</DependentUpon>
+      <DependentUpon>MiniShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbPHONGBAN.cs">
-      <DependentUpon>MiniShopModels.tt</DependentUpon>
+      <DependentUpon>MiniShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbSANPHAM.cs">
-      <DependentUpon>MiniShopModels.tt</DependentUpon>
+      <DependentUpon>MiniShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -784,32 +784,32 @@
     <Content Include="img\product\review-2.png" />
     <Content Include="img\product\review-3.png" />
     <Content Include="img\q1.jpg" />
-    <Content Include="img\r1.jpg" />
-    <Content Include="img\r10.jpg" />
-    <Content Include="img\r11.jpg" />
-    <Content Include="img\r12.jpg" />
-    <Content Include="img\r2.jpg" />
-    <Content Include="img\r3.jpg" />
-    <Content Include="img\r4.jpg" />
-    <Content Include="img\r5.jpg" />
-    <Content Include="img\r6.jpg" />
-    <Content Include="img\r7.jpg" />
-    <Content Include="img\r8.jpg" />
-    <Content Include="img\r9.jpg" />
+    <Content Include="img\product\r1.jpg" />
+    <Content Include="img\product\r10.jpg" />
+    <Content Include="img\product\r11.jpg" />
+    <Content Include="img\product\r12.jpg" />
+    <Content Include="img\product\r2.jpg" />
+    <Content Include="img\product\r3.jpg" />
+    <Content Include="img\product\r4.jpg" />
+    <Content Include="img\product\r5.jpg" />
+    <Content Include="img\product\r6.jpg" />
+    <Content Include="img\product\r7.jpg" />
+    <Content Include="img\product\r8.jpg" />
+    <Content Include="img\product\r9.jpg" />
     <Content Include="img\sd\c1.jpg" />
     <Content Include="img\sd\c2.jpg" />
     <Content Include="img\sd\c3.jpg" />
     <Content Include="img\sd\c4.jpg" />
     <Content Include="img\sd\c5.jpg" />
-    <Content Include="Models\MiniShopModels.Context.tt">
+    <Content Include="Models\MiniShopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MiniShopModels.edmx</DependentUpon>
-      <LastGenOutput>MiniShopModels.Context.cs</LastGenOutput>
+      <DependentUpon>MiniShopModel.edmx</DependentUpon>
+      <LastGenOutput>MiniShopModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\MiniShopModels.tt">
+    <Content Include="Models\MiniShopModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MiniShopModels.edmx</DependentUpon>
-      <LastGenOutput>MiniShopModels.cs</LastGenOutput>
+      <DependentUpon>MiniShopModel.edmx</DependentUpon>
+      <LastGenOutput>MiniShopModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -884,12 +884,12 @@
     <Content Include="Content\scss\theme\_product.scss" />
     <Content Include="Content\scss\theme\_reset.scss" />
     <Content Include="Content\scss\theme\_variables.scss" />
-    <EntityDeploy Include="Models\MiniShopModels.edmx">
+    <EntityDeploy Include="Models\MiniShopModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MiniShopModels.Designer.cs</LastGenOutput>
+      <LastGenOutput>MiniShopModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\MiniShopModels.edmx.diagram">
-      <DependentUpon>MiniShopModels.edmx</DependentUpon>
+    <Content Include="Models\MiniShopModel.edmx.diagram">
+      <DependentUpon>MiniShopModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\countdown.js" />
@@ -933,6 +933,8 @@
     <Content Include="Views\Home\ChiTietSanPham.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Home\Blog.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Home\UpdateProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

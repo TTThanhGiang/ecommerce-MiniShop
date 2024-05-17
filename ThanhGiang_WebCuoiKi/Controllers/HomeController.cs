@@ -5,12 +5,12 @@ using System.Web;
 using System.Web.Mvc;
 using ThanhGiang_WebCuoiKi.Models;
 using ThanhGiang_WebCuoiKi.App_Start;
-
+using System.Text.RegularExpressions;
 namespace ThanhGiang_WebCuoiKi.Controllers
 {
     public class HomeController : Controller
     {
-        dbMiniShopEntities1 db = new dbMiniShopEntities1();
+        dbMiniShopEntities2 db = new dbMiniShopEntities2();
         public ActionResult Index()
         {
             var sanphammoi = db.tbSANPHAMs.OrderByDescending(sp => sp.NGAYCAPNHAT).Take(8).ToList();
@@ -59,7 +59,7 @@ namespace ThanhGiang_WebCuoiKi.Controllers
                 if (data != null)
                 {
                     //add session
-                    Session["KhachHang"] = data;
+                    Session["NguoiDung"] = data;
                     if (data.VAITRO.Equals("customer"))
                         return RedirectToAction("Index", "Home");
                     else if(data.VAITRO.Equals("admin") || data.VAITRO.Equals("marketing") || data.VAITRO.Equals("sale"))
@@ -73,7 +73,11 @@ namespace ThanhGiang_WebCuoiKi.Controllers
             }
             return View();
         }
-
+        public ActionResult DangXuat()
+        {
+            Session["NguoiDung"] = null;
+            return RedirectToAction("DangNhap");
+        }
         public ActionResult DangKy()
         {
             return View();
@@ -89,23 +93,33 @@ namespace ThanhGiang_WebCuoiKi.Controllers
 
             if (ModelState.IsValid)
             {
-                var check = db.tbNGUOIDUNGs.SingleOrDefault(s => s.EMAIL.Equals(email));
-                if (check == null)
+                if (IsValidEmail(email))
                 {
-                    db.tbNGUOIDUNGs.Add(nguoidung);
+                    var check = db.tbNGUOIDUNGs.SingleOrDefault(s => s.EMAIL.Equals(email));
+                    var checkusername = db.tbNGUOIDUNGs.SingleOrDefault(s => s.TENDANGNHAP.Equals(nguoidung.TENDANGNHAP));
+                    if (check == null && checkusername == null)
+                    {
+                        db.tbNGUOIDUNGs.Add(nguoidung);
+                        db.SaveChanges();
+
+                        return RedirectToAction("DangNhap");
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Email đã được sử dụng";
+                        ViewBag.Checkusername = "Tên đăng nhập đã được sử dụng";
+                        return View();
+                    }
+                    var makhachhang = db.tbNGUOIDUNGs.Max(ng => ng.MANGUOIDUNG) + 1;
+                    tbKHACHHANG kh = new tbKHACHHANG(makhachhang, nguoidung.tbKHACHHANG.HOTEN, nguoidung.EMAIL);
+                    db.tbKHACHHANGs.Add(kh);
                     db.SaveChanges();
-                    
-                    return RedirectToAction("DangNhap");
                 }
                 else
                 {
-                    ViewBag.Message = "Email already exists";
-                    return View();
+                    ViewBag.Message = "Email không đúng định dạng";
                 }
-                var makhachhang = db.tbNGUOIDUNGs.Max(ng => ng.MANGUOIDUNG) + 1;
-                tbKHACHHANG kh = new tbKHACHHANG(makhachhang, nguoidung.tbKHACHHANG.HOTEN, email);
-                db.tbKHACHHANGs.Add(kh);
-                db.SaveChanges();
+                
             }
             return View();
         }
@@ -221,6 +235,71 @@ namespace ThanhGiang_WebCuoiKi.Controllers
             var ds = db.tbBAIDANGs.Where(bd => bd.TIEUDE.ToLower().Contains(input) || bd.NOIDUNG.ToLower().Contains(input) || bd.tbCHUYENMUC.TENCHUYENMUC.Contains(input)).ToList();
             TempData["DanhSachTimKiem"] = ds;
             return RedirectToAction("Blog");
+        }
+
+        public ActionResult Profile()
+        {
+            tbNGUOIDUNG nguoidung = (tbNGUOIDUNG)Session["NguoiDung"];
+            var listhoadon = (from hd in db.tbHOADONs
+                               join cthd in db.tbCHITIETHOADONs
+                                    on hd.MAHOADON equals cthd.MAHOADON
+                               join sp in db.tbSANPHAMs
+                                     on cthd.MASANPHAM equals sp.MASANPHAM
+                               where hd.MAKHACHHANG == nguoidung.MANGUOIDUNG
+                               select sp).ToList();
+
+            ViewBag.listhoadon = listhoadon;
+
+            return View(nguoidung);
+        }
+        public ActionResult UpdateProfile()
+        {
+            tbNGUOIDUNG nguoidung = (tbNGUOIDUNG)Session["NguoiDung"];
+            var khachhang = db.tbKHACHHANGs.Find(nguoidung.MANGUOIDUNG);
+            return View(khachhang);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateProfile([Bind(Include = "MAKHACHHANG,HOTEN,NGAYSINH,GIOITINH,SDT,EMAIL,DIACHI,TIEUSU")] tbKHACHHANG kh)
+        {
+            tbNGUOIDUNG nguoidung = (tbNGUOIDUNG)Session["NguoiDung"];
+                if (ModelState.IsValid)
+                {
+                    if (IsValidEmail(kh.EMAIL) && IsValidPhoneNumber(kh.SDT))
+                    {
+                        db.Entry(kh).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Profile");
+                    }
+                    else
+                    {
+                        if(!IsValidEmail(kh.EMAIL))
+                            ViewBag.checkemail = "Email sai định dạng";
+                        if(!IsValidPhoneNumber(kh.SDT))
+                            ViewBag.checksdt = "Số điện thoại sai định dạng";
+                        return View(kh);
+                    }
+
+
+                }
+
+
+            return View(kh);
+        }
+        static bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+                return false;
+
+            // Biểu thức chính quy kiểm tra email hợp lệ
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(email);
+        }
+        static bool IsValidPhoneNumber(string phoneNumber)
+        {
+            var regex = new Regex(@"^(090|098|091|031|035|038)\d{7}$");
+            return regex.IsMatch(phoneNumber);
         }
     }
 }

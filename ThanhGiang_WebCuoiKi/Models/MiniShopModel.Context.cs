@@ -13,10 +13,10 @@ namespace ThanhGiang_WebCuoiKi.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dbMiniShopEntities1 : DbContext
+    public partial class dbMiniShopEntities2 : DbContext
     {
-        public dbMiniShopEntities1()
-            : base("name=dbMiniShopEntities1")
+        public dbMiniShopEntities2()
+            : base("name=dbMiniShopEntities2")
         {
         }
     

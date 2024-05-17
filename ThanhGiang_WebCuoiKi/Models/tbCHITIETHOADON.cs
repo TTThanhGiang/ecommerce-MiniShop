@@ -14,7 +14,7 @@ namespace ThanhGiang_WebCuoiKi.Models
     
     public partial class tbCHITIETHOADON
     {
-        public string MACHITIET { get; set; }
+        public int MACHITIET { get; set; }
         public Nullable<int> MASANPHAM { get; set; }
         public Nullable<decimal> HD_SOLUONG { get; set; }
         public Nullable<decimal> HD_DONGIA { get; set; }

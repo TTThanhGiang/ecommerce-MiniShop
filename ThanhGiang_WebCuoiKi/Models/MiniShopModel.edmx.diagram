@@ -4,22 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e3a798ade0b046158537feca436382dc" Name="Diagram1" ZoomLevel="64">
+      <Diagram DiagramId="5837aaec4d8942b4941b0469c6ed4c62" Name="Diagram1" ZoomLevel="31">
         <EntityTypeShape EntityType="dbMiniShopModel.tbBAIDANG" Width="1.5" PointX="6" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="dbMiniShopModel.tbCHITIETHOADON" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="dbMiniShopModel.tbCHUYENMUC" Width="1.5" PointX="3.75" PointY="16" IsExpanded="true" />
         <EntityTypeShape EntityType="dbMiniShopModel.tbDANHMUC" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="dbMiniShopModel.tbGIOHANG" Width="1.5" PointX="8.25" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="dbMiniShopModel.tbHOADON" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbMiniShopModel.tbKHACHHANG" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbMiniShopModel.tbKHACHHANG" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="dbMiniShopModel.tbNGUOIDUNG" Width="1.5" PointX="1.5" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="dbMiniShopModel.tbNHANVIEN" Width="1.5" PointX="3.75" PointY="11.375" IsExpanded="true" />
         <EntityTypeShape EntityType="dbMiniShopModel.tbPHONGBAN" Width="1.5" PointX="1.5" PointY="15" IsExpanded="true" />
         <EntityTypeShape EntityType="dbMiniShopModel.tbSANPHAM" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
         <AssociationConnector Association="dbMiniShopModel.FK__tbBAIDANG__MACHU__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="dbMiniShopModel.FK__tbBAIDANG__NGUOI__4222D4EF" ManuallyRouted="false" />
-        <AssociationConnector Association="dbMiniShopModel.FK__tbCHITIET__MAHOA__38996AB5" ManuallyRouted="false" />
-        <AssociationConnector Association="dbMiniShopModel.FK__tbCHITIET__MASAN__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="dbMiniShopModel.FK__tbCHITIET__MAHOA__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="dbMiniShopModel.FK__tbCHITIET__MASAN__4BAC3F29" ManuallyRouted="false" />
         <AssociationConnector Association="dbMiniShopModel.FK__tbSANPHAM__MADAN__31EC6D26" ManuallyRouted="false" />
         <AssociationConnector Association="dbMiniShopModel.FK__tbGIOHANG__MAKHA__3B75D760" ManuallyRouted="false" />
         <AssociationConnector Association="dbMiniShopModel.FK__tbGIOHANG__MASAN__3C69FB99" ManuallyRouted="false" />
