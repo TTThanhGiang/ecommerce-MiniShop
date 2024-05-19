@@ -1,0 +1,70 @@
+﻿@model ThanhGiang_WebCuoiKi.Models.tbBAIDANG
+
+@{
+    Layout = "~/Views/Admin/AdminLayout.cshtml";
+    ViewBag.Title = "Create";
+}
+
+<div class="app-content pt-3 p-md-3 p-lg-4">
+    <div class="container-xl">
+        <section class="blog_area">
+            <div class="container">
+                @using (Html.BeginForm("Create", "BaiDang", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Bài viết mới</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label>Tiêu đề</label>
+                        @Html.EditorFor(model => model.TIEUDE, new { htmlAttributes = new { @class = "form-input" } })
+                        @Html.ValidationMessageFor(model => model.TIEUDE, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <div class="control-label col-md-2">Hình ảnh</div>
+                        <input type="file" name="HINHANH" />
+                        @Html.ValidationMessageFor(model => model.HINHANH, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Chuyên mục</label>
+                        @Html.DropDownList("MACHUYENMUC", null, htmlAttributes: new { @class = "form-input" })
+                        @Html.ValidationMessageFor(model => model.MACHUYENMUC, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ngày đăng</label>
+                        @Html.EditorFor(model => model.NGAYDANG, new { htmlAttributes = new { @class = "form-input" } })
+                        @Html.ValidationMessageFor(model => model.NGAYDANG, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ngày bắt đầu</label>
+                        @Html.EditorFor(model => model.NGAYBATDAU, new { htmlAttributes = new { @class = "form-input" } })
+                        @Html.ValidationMessageFor(model => model.NGAYBATDAU, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ngày kết thúc</label>
+                        @Html.EditorFor(model => model.NGAYKETTHUC, new { htmlAttributes = new { @class = "form-input" } })
+                        @Html.ValidationMessageFor(model => model.NGAYKETTHUC, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Nội dung</label>
+                            @Html.TextAreaFor(model => model.NOIDUNG, new { @class = "form-input", @rows = "3"  })
+                            @Html.ValidationMessageFor(model => model.NOIDUNG, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <div class="col-update">
+                            <input type="submit" value="Create" class="btn-update" />
+                        </div>
+                    </div>
+                </div>
+                }
+            </div><!--//container-fluid-->
+        </section>
+    </div>
+</div>

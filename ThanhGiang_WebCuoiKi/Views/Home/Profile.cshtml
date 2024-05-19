@@ -1,0 +1,93 @@
+﻿@model ThanhGiang_WebCuoiKi.Models.tbNGUOIDUNG
+@{
+    ViewBag.Title = "Profile";
+
+
+}
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Profile</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="category.html">Profile</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="blog_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blog_left_sidebar">
+                    <article class="row blog_item">
+                        <div class="container">
+                            <div class="cart_inner">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Image</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.listhoadon) {
+                                                <tr>
+                                                    <td>
+                                                        <div class="media">
+                                                            <div class="d-flex">
+                                                                <img src='~/img/product/@item.HINHANH' style=" width: 90px; height: 90px; object-fit: cover;" alt="">
+                                                            </div>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <h5>@item.TENSANPHAM</h5>
+                                                    </td>
+                                                    <td>
+                                                        <h5>@item.DONGIA</h5>
+                                                    </td>
+
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar" style=" margin-bottom: 30px;">
+
+                    <aside class="single_sidebar_widget author_widget">
+                        <img class="author_img rounded-circle" src='~/img/blog/@Html.DisplayFor(model => model.tbKHACHHANG.HINHANH)' style="object-fit: cover; height: 150px; width: 150px;" alt="">
+                        <h4>@Html.DisplayFor(model => model.tbKHACHHANG.HOTEN)</h4>
+                        <p>@Html.DisplayFor(model => model.tbKHACHHANG.DIACHI)</p>
+
+                        <p>
+                            @Html.DisplayFor(model => model.tbKHACHHANG.TIEUSU)
+                        </p>
+                        <div class="br"></div>
+                    </aside>
+                    <aside class="single_sidebar_widget popular_post_widget">
+                        <h3 class="widget_title"><a class="nav-link" style="color:white" href="@Url.Action("UpdateProfile","Home")">Update</a></h3>
+
+                        <div class="br"></div>
+                    </aside>
+
+
+                </div>
+            </div>
+            <div class="col-lg-8">
+            </div>
+        </div>
+    </div>
+</section>
+

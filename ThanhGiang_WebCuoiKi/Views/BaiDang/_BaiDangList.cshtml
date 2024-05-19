@@ -1,0 +1,36 @@
+﻿@model List<ThanhGiang_WebCuoiKi.Models.tbBAIDANG>
+
+<h5 class="card-header">Danh sách bài đăng</h5>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered first">
+            <thead>
+                <tr>
+                    <th style="text-align: center; width: 400px ;">Tên bài đăng</th>
+                    <th style="text-align: center; width: 100px ;">Hình ảnh</th>
+                    <th style="text-align: center; width: 100px ;">Ngày đăng</th>
+                    <th style="text-align: center; width: 150px ;">Người đăng</th>
+                    <th style="text-align: center; width: 100px ;">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.TIEUDE</td>
+                            <td style="text-align: center;">
+                                <img style="width: 100px; height: 100px" src="~/img/blog/@item.HINHANH" alt="">
+                            </td>
+                            <td style="text-align: center;">@item.NGAYDANG.Value.ToString("dd/MM/yyyy")</td>
+                            <td style="text-align: center;">@item.tbNHANVIEN.HOTEN</td>
+                            <td style="text-align: center;">    
+                                <a style="color: red" href="@Url.Action("Edit" ,new { id = item.MABAIDANG })">Sửa</a>
+                                <a style="color: red" href="@Url.Action("Index" ,new { id = item.MABAIDANG })">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+            </tbody>
+
+        </table>
+    </div>
+</div>

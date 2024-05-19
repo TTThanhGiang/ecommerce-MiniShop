@@ -1,0 +1,97 @@
+﻿@model ThanhGiang_WebCuoiKi.Models.tbKHACHHANG
+
+@{
+    ViewBag.Title = "UpdateProfile";
+}
+
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Blog Page</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="category.html">Blog</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+<!--================Blog Categorie Area =================-->
+
+<section class="blog_area">
+    <div class="container">
+
+        @using (Html.BeginForm("UpdateProfile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>UPDATE PROFILE</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.MAKHACHHANG)
+
+            <div class="form-group">
+                <label>Họ và tên</label>
+                    @Html.EditorFor(model => model.HOTEN, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HOTEN, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label>Ngày sinh</label>
+                    <input type="date" class="form-control" id="ngaysinh" name="NGAYSINH" value=@Model.NGAYSINH.Value.ToString("yyyy-MM-dd") />
+                    @Html.ValidationMessageFor(model => model.NGAYSINH, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label>Giới tính</label>
+
+                    @Html.EditorFor(model => model.GIOITINH, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.GIOITINH, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                <label>Số điện thoại</label>
+
+                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                @if (ViewBag.checksdt != null)
+                {
+                    <p style="font-size:small; text-align:left;height:fit-content; margin-block-end:0px; color:red">@ViewBag.checksdt</p>
+                }
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+
+                @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+                @if (ViewBag.checkemail != null)
+                {
+                    <p style="font-size: small; text-align: left;  height: fit-content; margin-block-end: 0px; color: red">@ViewBag.checkemail</p>
+                }
+            </div>
+
+            <div class="form-group">
+                <label>Địa chỉ</label>
+                    @Html.EditorFor(model => model.DIACHI, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DIACHI, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label>Tiểu sử</label>
+                    @Html.TextAreaFor(model => model.TIEUSU, new { @class = "form-control", @rows = "3" })
+                    @Html.ValidationMessageFor(model => model.TIEUSU, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="UpdateProfile" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
+</section>

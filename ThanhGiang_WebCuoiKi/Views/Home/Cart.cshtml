@@ -1,0 +1,135 @@
+﻿@model List<ThanhGiang_WebCuoiKi.Models.ModelSanpham>
+@{
+    var TOTAL_PRICE = ViewBag.TOTAL_PRICE;
+}
+@{
+    ViewBag.Title = "Cart";
+}
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Shopping Cart</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="category.html">Cart</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+<!--================Cart Area =================-->
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Cancel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img style="width: 100px; height: 100px" src="/img/product/@product.HinhAnh" alt="@product.TenSanPham">
+                                        </div>
+                                        <div class="media-body">
+                                            <p>@product.TenSanPham</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>$ @product.Gia</h5>
+                                </td>
+                                <td>
+                                    <div class="product_count">
+                                        <input type="text" name="qty" id="sst" maxlength="12" value="@product.SoLuong" title="Quantity:"
+                                               class="input-text qty __input__qty">
+                                        @*<button onclick="changeQuantity(this); var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"*@
+                                        <button onclick="changeQuantity(this, 1, @product.MaSanPham);"
+                                                class="increase items-count" type="button">
+                                            <i class="lnr lnr-chevron-up"></i>
+                                        </button>
+                                        @*<button onclick="changeQuantity(this); var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"*@
+                                        <button onclick="changeQuantity(this, -1, @product.MaSanPham);"
+                                                class="reduced items-count" type="button">
+                                            <i class="lnr lnr-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td>
+                                    @{
+                                        var totalPrice = @product.Gia * @product.SoLuong;
+                                    }
+                                    <h5 style="width: 50px">$@totalPrice</h5>
+                                </td>
+                                <td>
+                                    <a style="color: red" data-product-id="@product.MaSanPham" style="padding: 0px 10px" href="@Url.Action("DeleteCartItem","Home", new {masanpham = @product.MaSanPham })">Remove</a>
+                                </td>
+                            </tr>
+
+                        }
+                        <tr class="bottom_button">
+                            <td>
+                                <a class="gray_btn" href="@Url.Action("Cart","Home")">Update Cart</a>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+
+                        <!--======End Cart Item======-->
+                        <tr class="bottom_button">
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <h5>Subtotal</h5>
+                            </td>
+                            <td>
+                                <h5>$ @TOTAL_PRICE</h5>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr class="out_button_area">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div class="checkout_btn_inner d-flex align-items-center">
+                                    <a style="width:240px" class="gray_btn" href="index">Continue Shopping</a>
+                                    <a class="primary-btn" href="#">Proceed to checkout</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function changeQuantity(e, n, id) {
+        const input = e.parentElement?.querySelector(".__input__qty");
+        if (!input) return;
+        let value = parseInt(input.value) || 1;
+        const qty = value + n
+        fetch(`/Home/AddToCart?masanpham=${id}&soluong=${qty}`)
+            .then(() => input.value = qty)
+    }
+</script>
+
+
