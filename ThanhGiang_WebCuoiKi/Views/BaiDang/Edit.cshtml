@@ -53,13 +53,13 @@
                         @{
                             String ngaybatdau = Model.NGAYBATDAU.HasValue ? Model.NGAYBATDAU.Value.ToString("yyyy-MM-dd") : " ";
                             String ngayketthuc = Model.NGAYKETTHUC.HasValue ? Model.NGAYKETTHUC.Value.ToString("yyyy-MM-dd") : " ";}
-                        <input type="date" class="form-control" id="ngaysinh" name="NGAYDANG" value=@ngaybatdau />
+                        <input type="date" class="form-control" id="ngaysinh" name="NGAYBATDAU" value=@ngaybatdau />
                         @Html.ValidationMessageFor(model => model.NGAYBATDAU, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
                         <label>Ngày kết thúc</label>
-                        <input type="date" class="form-control" id="ngaysinh" name="NGAYDANG" value=@ngayketthuc />
+                        <input type="date" class="form-control" id="ngaysinh" name="NGAYKETTHUC" value=@ngayketthuc />
                         @Html.ValidationMessageFor(model => model.NGAYKETTHUC, "", new { @class = "text-danger" })
                     </div>
 
