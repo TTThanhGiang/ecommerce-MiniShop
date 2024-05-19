@@ -129,6 +129,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\TelexHelper.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaiDangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -586,6 +588,7 @@
     <Content Include="Content\admin\assets\vendor\timeline\img\cd-icon-picture.svg" />
     <Content Include="Content\admin\assets\vendor\timeline\js\main.js" />
     <Content Include="Content\admin\assets\vendor\vector-map\jqvmap.css" />
+    <Content Include="Content\css\admin.css" />
     <Content Include="Content\css\availability-calendar.css" />
     <Content Include="Content\css\blog.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -599,6 +602,7 @@
     <Content Include="Content\css\nice-select.css" />
     <Content Include="Content\css\nouislider.min.css" />
     <Content Include="Content\css\owl.carousel.css" />
+    <Content Include="Content\css\portal.css" />
     <Content Include="Content\css\themify-icons.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
@@ -811,6 +815,13 @@
       <DependentUpon>MiniShopModel.edmx</DependentUpon>
       <LastGenOutput>MiniShopModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\Admin\all.min.js" />
+    <Content Include="Scripts\Admin\app.js" />
+    <Content Include="Scripts\Admin\bootstrap.min.js" />
+    <Content Include="Scripts\Admin\chart.min.js" />
+    <Content Include="Scripts\Admin\charts-demo.js" />
+    <Content Include="Scripts\Admin\index-charts.js" />
+    <Content Include="Scripts\Admin\popper.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -935,6 +946,12 @@
     <Content Include="Views\Home\Blog.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
     <Content Include="Views\Home\UpdateProfile.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\AdminLayout.cshtml" />
+    <Content Include="Views\BaiDang\_BaiDangList.cshtml" />
+    <Content Include="Views\BaiDang\Create.cshtml" />
+    <Content Include="Views\BaiDang\Edit.cshtml" />
+    <Content Include="Views\BaiDang\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -63,7 +63,7 @@ namespace ThanhGiang_WebCuoiKi.Controllers
                     if (data.VAITRO.Equals("customer"))
                         return RedirectToAction("Index", "Home");
                     else if(data.VAITRO.Equals("admin") || data.VAITRO.Equals("marketing") || data.VAITRO.Equals("sale"))
-                        return RedirectToAction("TrangChu", "Admin");
+                        return RedirectToAction("Index", "Admin");
                 }
                 else
                 {
