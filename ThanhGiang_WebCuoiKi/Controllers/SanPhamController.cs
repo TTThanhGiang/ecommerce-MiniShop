@@ -8,7 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ThanhGiang_WebCuoiKi.Models;
-
+using System.IO;
 namespace ThanhGiang_WebCuoiKi.Controllers
 {
     public class SanPhamController : Controller
@@ -40,10 +40,18 @@ namespace ThanhGiang_WebCuoiKi.Controllers
         // POST: SanPham/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "MASANPHAM,TENSANPHAM,DONGIA,SOLUONG,HINHANH,MOTA,MADANHMUC,NGAYCAPNHAT,SOLUONGDABAN,SOLUONGTOITHIEU,SOLUOTDANHGIA,CHATLUONG")] tbSANPHAM tbSANPHAM)
+        public async Task<ActionResult> Create([Bind(Include = "MASANPHAM,TENSANPHAM,DONGIA,SOLUONG,HINHANH,MOTA,MADANHMUC,NGAYCAPNHAT")] tbSANPHAM tbSANPHAM, HttpPostedFileBase HINHANH)
         {
             if (ModelState.IsValid)
             {
+
+                if(HINHANH != null && HINHANH.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(HINHANH.FileName);
+                    var path = Path.Combine(Server.MapPath("~/img/product"), fileName);
+                    HINHANH.SaveAs(path);
+                    tbSANPHAM.HINHANH = fileName;
+                }
                 db.tbSANPHAMs.Add(tbSANPHAM);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -72,15 +80,42 @@ namespace ThanhGiang_WebCuoiKi.Controllers
         // POST: SanPham/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "MASANPHAM,TENSANPHAM,DONGIA,SOLUONG,HINHANH,MOTA,MADANHMUC,NGAYCAPNHAT,SOLUONGDABAN,SOLUONGTOITHIEU,SOLUOTDANHGIA,CHATLUONG")] tbSANPHAM tbSANPHAM)
+        public async Task<ActionResult> Edit([Bind(Include = "MASANPHAM,TENSANPHAM,DONGIA,SOLUONG,MOTA,MADANHMUC,NGAYCAPNHAT")] tbSANPHAM tbSANPHAM, HttpPostedFileBase HINHANH)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbSANPHAM).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                var sp = await db.tbSANPHAMs.FindAsync(tbSANPHAM.MASANPHAM);
+
+                if (sp != null)
+                {
+                    if (HINHANH != null && HINHANH.ContentLength > 0)
+                    {
+                        // Lưu hình ảnh mới vào thư mục trên máy chủ
+                        var fileName = Path.GetFileName(HINHANH.FileName);
+                        var path = Path.Combine(Server.MapPath("~/img/product"), fileName);
+                        HINHANH.SaveAs(path);
+
+                        // Xóa hình ảnh cũ nếu có (tùy chọn)
+                        var oldImagePath = Server.MapPath("~/img/product/" + sp.HINHANH);
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+                        // Cập nhật tên hình ảnh vào cơ sở dữ liệu
+                        tbSANPHAM.HINHANH = fileName;
+                    }
+                    else
+                    {
+                        // Giữ nguyên hình ảnh cũ nếu không có tệp mới
+                        tbSANPHAM.HINHANH = sp.HINHANH;
+                    }
+
+                    db.Entry(sp).CurrentValues.SetValues(tbSANPHAM);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
-            ViewBag.MADANHMUC = new SelectList(db.tbDANHMUCs, "MADANHMUC", "TENDANHMUC", tbSANPHAM.MADANHMUC);
+                ViewBag.MADANHMUC = new SelectList(db.tbDANHMUCs, "MADANHMUC", "TENDANHMUC", tbSANPHAM.MADANHMUC);
             return View(tbSANPHAM);
         }
         public ActionResult GetSanPham(int? danhmuc, string timkiem)

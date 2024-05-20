@@ -14,15 +14,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                 @foreach (var item in Model)
                 {
                 <tr>
                     <td>@item.TENSANPHAM</td>
-                    <td style="text-align: center;">@item.DONGIA $</td>
-                    <td style="text-align: center;">@item.SOLUONG</td>
                     <td style="text-align: center;">
                         <img style="width: 100px; height: 100px" src="~/img/product/@item.HINHANH" alt="">
                     </td>
+                    <td style="text-align: center;">@item.DONGIA $</td>
+                    <td style="text-align: center;">@item.SOLUONG</td>
                     <td style="text-align: center;">
                         <a style="color: red" href="@Url.Action("Edit" ,new { id = item.MASANPHAM })">Sửa</a>
                         <a style="color: red" href="@Url.Action("Index" ,new { id = item.MASANPHAM })">Xóa</a>
