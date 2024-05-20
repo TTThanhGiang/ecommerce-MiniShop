@@ -103,38 +103,54 @@ namespace ThanhGiang_WebCuoiKi.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "MABAIDANG,TIEUDE,NOIDUNG,NGUOIDANG,NGAYDANG,NGAYBATDAU,NGAYKETTHUC,MACHUYENMUC")] tbBAIDANG tbBAIDANG, HttpPostedFileBase HINHANH)
         {
+           
             if (ModelState.IsValid)
             {
-                // Tìm bài đăng trong cơ sở dữ liệu để giữ nguyên hình ảnh cũ nếu không có tệp mới
                 var existingBaiDang = await db.tbBAIDANGs.FindAsync(tbBAIDANG.MABAIDANG);
-
-                if (existingBaiDang != null)
+                if (tbBAIDANG.TIEUDE.Length > 20 && tbBAIDANG.TIEUDE.Length < 150 && tbBAIDANG.NOIDUNG != null)
                 {
-                    if (HINHANH != null && HINHANH.ContentLength > 0)
-                    {
-                        // Lưu hình ảnh mới vào thư mục trên máy chủ
-                        var fileName = Path.GetFileName(HINHANH.FileName);
-                        var path = Path.Combine(Server.MapPath("~/img/blog"), fileName);
-                        HINHANH.SaveAs(path);
+                    // Tìm bài đăng trong cơ sở dữ liệu để giữ nguyên hình ảnh cũ nếu không có tệp mới
+                    
 
-                        // Xóa hình ảnh cũ nếu có (tùy chọn)
-                        var oldImagePath = Server.MapPath("~/img/blog/" + existingBaiDang.HINHANH);
-                        if (System.IO.File.Exists(oldImagePath))
+                    if (existingBaiDang != null)
+                    {
+                        if (HINHANH != null && HINHANH.ContentLength > 0)
                         {
-                            System.IO.File.Delete(oldImagePath);
-                        }
-                        // Cập nhật tên hình ảnh vào cơ sở dữ liệu
-                        tbBAIDANG.HINHANH = fileName;
-                    }
-                    else
-                    {
-                        // Giữ nguyên hình ảnh cũ nếu không có tệp mới
-                        tbBAIDANG.HINHANH = existingBaiDang.HINHANH;
-                    }
+                            // Lưu hình ảnh mới vào thư mục trên máy chủ
+                            var fileName = Path.GetFileName(HINHANH.FileName);
+                            var path = Path.Combine(Server.MapPath("~/img/blog"), fileName);
+                            HINHANH.SaveAs(path);
 
-                    db.Entry(existingBaiDang).CurrentValues.SetValues(tbBAIDANG);
-                    await db.SaveChangesAsync();
-                    return RedirectToAction("Index");
+                            // Xóa hình ảnh cũ nếu có (tùy chọn)
+                            var oldImagePath = Server.MapPath("~/img/blog/" + existingBaiDang.HINHANH);
+                            if (System.IO.File.Exists(oldImagePath))
+                            {
+                                System.IO.File.Delete(oldImagePath);
+                            }
+                            // Cập nhật tên hình ảnh vào cơ sở dữ liệu
+                            tbBAIDANG.HINHANH = fileName;
+                        }
+                        else
+                        {
+                            // Giữ nguyên hình ảnh cũ nếu không có tệp mới
+                            tbBAIDANG.HINHANH = existingBaiDang.HINHANH;
+                        }
+
+                        db.Entry(existingBaiDang).CurrentValues.SetValues(tbBAIDANG);
+                        await db.SaveChangesAsync();
+                        return RedirectToAction("Index");
+                    }
+                }
+                else
+                {
+                    if (tbBAIDANG.TIEUDE.Length < 20 || tbBAIDANG.TIEUDE.Length > 150)
+                        ViewBag.loitieude = "Tiêu đề phải nhiều hơn 20 và nhỏ hơn 150 kí tự";
+                    if (tbBAIDANG.NOIDUNG == null)
+                        ViewBag.loinoidung = "Phải nhập nội dung";
+                    ViewBag.MACHUYENMUC = new SelectList(db.tbCHUYENMUCs, "MACHUYENMUC", "TENCHUYENMUC", tbBAIDANG.MACHUYENMUC);
+                    ViewBag.NGUOIDANG = new SelectList(db.tbNHANVIENs, "MANHANVIEN", "HOTEN", tbBAIDANG.NGUOIDANG);
+                    tbBAIDANG.HINHANH = existingBaiDang.HINHANH;
+                    return View(tbBAIDANG);
                 }
             }
             ViewBag.MACHUYENMUC = new SelectList(db.tbCHUYENMUCs, "MACHUYENMUC", "TENCHUYENMUC", tbBAIDANG.MACHUYENMUC);

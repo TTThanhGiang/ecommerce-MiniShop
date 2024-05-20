@@ -79,29 +79,40 @@
                             </tr>
 
                         }
-                        <tr class="bottom_button">
-                            <td>
-                                <a class="gray_btn" href="@Url.Action("Cart","Home")">Update Cart</a>
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
+                    <tr class="bottom_button">
+                        <td>
+                            <a class="gray_btn" href="@Url.Action("Cart","Home")">Update Cart</a>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
 
                         <!--======End Cart Item======-->
-                        <tr class="bottom_button">
+                    <tr class="bottom_button">
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <h5>Subtotal</h5>
+                        </td>
+                        <td>
+                            <h5>$ @TOTAL_PRICE</h5>
+                        </td>
+                        <td></td>
+
+                    </tr>
+                        <tr class="shipping_area">
+                            <td></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td>
-                                <h5>Subtotal</h5>
                             </td>
-                            <td>
-                                <h5>$ @TOTAL_PRICE</h5>
-                            </td>
-                            <td></td>
                         </tr>
                         <tr class="out_button_area">
                             <td></td>
@@ -110,7 +121,7 @@
                             <td></td>
                             <td>
                                 <div class="checkout_btn_inner d-flex align-items-center">
-                                    <a style="width:240px" class="gray_btn" href="index">Continue Shopping</a>
+                                    <a style="width: 240px; padding: 0px 30px;" class="gray_btn" href="index">Continue Shopping</a>
                                     <a class="primary-btn" href="#">Proceed to checkout</a>
                                 </div>
                             </td>
