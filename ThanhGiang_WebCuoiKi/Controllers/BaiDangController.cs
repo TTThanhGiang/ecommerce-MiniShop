@@ -40,7 +40,7 @@ namespace ThanhGiang_WebCuoiKi.Controllers
         // POST: BaiDang/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "MABAIDANG,TIEUDE,NOIDUNG,NGAYDANG,NGAYBATDAU,NGAYKETTHUC,MACHUYENMUC")] tbBAIDANG tbBAIDANG, HttpPostedFileBase HINHANH)
+        public async Task<ActionResult> Create([Bind(Include = "MABAIDANG,TIEUDE,NOIDUNG,NGAYBATDAU,NGAYKETTHUC,MACHUYENMUC")] tbBAIDANG tbBAIDANG, HttpPostedFileBase HINHANH)
         {
             tbNGUOIDUNG nguoidung = (tbNGUOIDUNG)Session["NguoiDung"];
             if (ModelState.IsValid)
@@ -60,6 +60,14 @@ namespace ThanhGiang_WebCuoiKi.Controllers
                     {
                         // Giữ nguyên hình ảnh cũ nếu không có tệp mới
                         tbBAIDANG.HINHANH = " ";
+                    }
+                    if(tbBAIDANG.NGAYDANG == null)
+                    {
+                        tbBAIDANG.NGAYDANG = DateTime.Now;
+                    }
+                    else
+                    {
+                        tbBAIDANG.NGAYDANG = tbBAIDANG.NGAYDANG;
                     }
                     tbBAIDANG.NGUOIDANG = nguoidung.MANGUOIDUNG;
                     db.tbBAIDANGs.Add(tbBAIDANG);
@@ -159,14 +167,14 @@ namespace ThanhGiang_WebCuoiKi.Controllers
         }
         public ActionResult GetBaiDang(int? chuyenmuc, string timkiem)
         {
-            IQueryable<tbBAIDANG> list = db.tbBAIDANGs;
-            String text = timkiem.ToLower();
+            IQueryable<tbBAIDANG> list = db.tbBAIDANGs;           
             if (chuyenmuc.HasValue)
             {
                 list = list.Where(p => p.MACHUYENMUC == chuyenmuc);
             }
             if (!string.IsNullOrEmpty(timkiem))
             {
+                String text = timkiem.ToLower();
                 list = list.Where(p => p.TIEUDE.ToLower().Contains(text) || p.NOIDUNG.ToLower().Contains(text));
             }
             var listbd = list.ToList();
