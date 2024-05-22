@@ -228,6 +228,13 @@ namespace ThanhGiang_WebCuoiKi.Controllers
             ViewBag.DanhMucBaiViet= danhMucBaiViet;
             return View(listbaidang);
         }
+
+        public ActionResult DetailsBlog(int? id)
+        {
+            var baidang = db.tbBAIDANGs.Find(id);
+            return View(baidang);
+        }
+
         [HttpPost]
         public ActionResult TimKiemBlog(string text)
         {

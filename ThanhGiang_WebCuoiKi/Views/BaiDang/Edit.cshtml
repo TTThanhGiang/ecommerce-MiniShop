@@ -12,79 +12,86 @@
                 {
                     @Html.AntiForgeryToken()
 
-                <div class="form-horizontal">
-                    <h4>Chỉnh sửa bài đăng</h4>
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.HiddenFor(model => model.MABAIDANG)
+                    <div class="form-horizontal">
+                        <h4>Chỉnh sửa bài đăng</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.MABAIDANG)
 
-                <div class="form-group">
-                    <label>Tiêu đề</label>
-                    @Html.EditorFor(model => model.TIEUDE, new { htmlAttributes = new { @class = "form-input" } })
-                    @Html.ValidationMessageFor(model => model.TIEUDE, "", new { @class = "text-danger" })
-                    @if (ViewBag.loitieude != null)
-                    {
-                        <p style="font-size:small; text-align:left;height:fit-content; margin-block-end:0px; color:red">@ViewBag.loitieude</p>
-                    }
-                </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">Hình ảnh</div>
-                        <img id="preview_image" class="img-fluid" src="~/img/blog/@Model.HINHANH" alt="Product Image" style="max-width: 200px;">
-                        <input type="file" name="HINHANH" />
-                        @Html.ValidationMessageFor(model => model.HINHANH, "", new { @class = "text-danger" })
-                    </div>
+                        <div class="form-group">
+                            <label>Tiêu đề</label>
+                            @Html.EditorFor(model => model.TIEUDE, new { htmlAttributes = new { @class = "form-input" } })
+                            @Html.ValidationMessageFor(model => model.TIEUDE, "", new { @class = "text-danger" })
+                            @if (ViewBag.loitieude != null)
+                            {
+                                <p style="font-size:small; text-align:left;height:fit-content; margin-block-end:0px; color:red">@ViewBag.loitieude</p>
+                            }
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-2">Hình ảnh</div>
+                            <img id="preview_image" class="img-fluid" src="~/img/blog/@Model.HINHANH" alt="Product Image" style="max-width: 200px;">
+                            <input type="file" name="HINHANH" />
+                            @Html.ValidationMessageFor(model => model.HINHANH, "", new { @class = "text-danger" })
+                        </div>
 
-                    <div class="form-group">
-                        <label>Chuyên mục</label>
-                        @Html.DropDownList("MACHUYENMUC", null, htmlAttributes: new { @class = "form-input" })
-                        @Html.ValidationMessageFor(model => model.MACHUYENMUC, "", new { @class = "text-danger" })
-                    </div>
+                        <div class="form-group">
+                            <label>Chuyên mục</label>
+                            @Html.DropDownList("MACHUYENMUC", null, htmlAttributes: new { @class = "form-input" })
+                            @Html.ValidationMessageFor(model => model.MACHUYENMUC, "", new { @class = "text-danger" })
+                        </div>
 
-                    <div class="form-group">
-                        <label>Người đăng</label>
-                        @Html.DropDownList("NGUOIDANG", null, htmlAttributes: new { @class = "form-input" })
-                        @Html.ValidationMessageFor(model => model.NGUOIDANG, "", new { @class = "text-danger" })
-                    </div>
+                        <div class="form-group">
+                            <label>Người đăng</label>
+                            @Html.DropDownList("NGUOIDANG", null, htmlAttributes: new { @class = "form-input" })
+                            @Html.ValidationMessageFor(model => model.NGUOIDANG, "", new { @class = "text-danger" })
+                        </div>
 
-                    <div class="form-group">
-                        <label>Ngày đăng</label>
-                        <input type="date" class="form-control" id="ngaysinh" name="NGAYDANG" value=@Model.NGAYDANG.Value.ToString("yyyy-MM-dd") />
-                        @Html.ValidationMessageFor(model => model.NGAYDANG, "", new { @class = "text-danger" })
-                    </div>
+                        <div class="form-group">
+                            <label>Ngày đăng</label>
+                            <input type="date" class="form-control" id="ngaysinh" name="NGAYDANG" value=@Model.NGAYDANG.Value.ToString("yyyy-MM-dd") />
+                            @Html.ValidationMessageFor(model => model.NGAYDANG, "", new { @class = "text-danger" })
+                        </div>
 
-                    <div class="form-group">
-                        <label>Ngày bắt đầu</label>
-                        @{
-                            String ngaybatdau = Model.NGAYBATDAU.HasValue ? Model.NGAYBATDAU.Value.ToString("yyyy-MM-dd") : " ";
-                            String ngayketthuc = Model.NGAYKETTHUC.HasValue ? Model.NGAYKETTHUC.Value.ToString("yyyy-MM-dd") : " ";}
-                        <input type="date" class="form-control" id="ngaysinh" name="NGAYBATDAU" value=@ngaybatdau />
-                        @Html.ValidationMessageFor(model => model.NGAYBATDAU, "", new { @class = "text-danger" })
-                    </div>
+                        <div class="form-group">
+                            <label>Ngày bắt đầu</label>
+                            @{
+                                String ngaybatdau = Model.NGAYBATDAU.HasValue ? Model.NGAYBATDAU.Value.ToString("yyyy-MM-dd") : " ";
+                                String ngayketthuc = Model.NGAYKETTHUC.HasValue ? Model.NGAYKETTHUC.Value.ToString("yyyy-MM-dd") : " ";}
+                            <input type="date" class="form-control" id="ngaysinh" name="NGAYBATDAU" value=@ngaybatdau />
+                            @Html.ValidationMessageFor(model => model.NGAYBATDAU, "", new { @class = "text-danger" })
+                        </div>
 
-                    <div class="form-group">
-                        <label>Ngày kết thúc</label>
-                        <input type="date" class="form-control" id="ngaysinh" name="NGAYKETTHUC" value=@ngayketthuc />
-                        @Html.ValidationMessageFor(model => model.NGAYKETTHUC, "", new { @class = "text-danger" })
-                    </div>
+                        <div class="form-group">
+                            <label>Ngày kết thúc</label>
+                            <input type="date" class="form-control" id="ngaysinh" name="NGAYKETTHUC" value=@ngayketthuc />
+                            @Html.ValidationMessageFor(model => model.NGAYKETTHUC, "", new { @class = "text-danger" })
+                        </div>
 
-                    <div class="form-group">
-                        <label>Nội dung</label>
-                        @Html.TextAreaFor(model => model.NOIDUNG, new { @class = "form-input", @rows = "3" })
-                        @Html.ValidationMessageFor(model => model.NOIDUNG, "", new { @class = "text-danger" })
-                        @if (ViewBag.loinoidung != null)
-                        {
-                            <p style="font-size:small; text-align:left;height:fit-content; margin-block-end:0px; color:red">@ViewBag.loinoidung</p>
-                        }
-                    </div>
-                    <div class="form-group">
-                        <div class="col-update">
-                            <input type="submit" value="Update" class="btn-update" />
+                        <div class="form-group">
+                            <label>Nội dung</label>
+                            @Html.TextAreaFor(model => model.NOIDUNG, new { @class = "form-input", @rows = "3", @id = "NoiDung" })
+                            @Html.ValidationMessageFor(model => model.NOIDUNG, "", new { @class = "text-danger" })
+                            @if (ViewBag.loinoidung != null)
+                            {
+                                <p style="font-size:small; text-align:left;height:fit-content; margin-block-end:0px; color:red">@ViewBag.loinoidung</p>
+                            }
+                        </div>
+                        <div class="form-group">
+                            <div class="col-update">
+                                <input type="submit" value="Update" class="btn-update" />
+                            </div>
                         </div>
                     </div>
-                </div>
                 }
 
             </div><!--//container-fluid-->
         </section>
     </div>
 </div>
+@section Scripts{
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script>
+   
+        CKEDITOR.replace("NoiDung");
+    </script>
+}
