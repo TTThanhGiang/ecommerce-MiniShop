@@ -24,7 +24,6 @@ namespace ThanhGiang_WebCuoiKi.Models
         public int MAKHACHHANG { get; set; }
         public string HOTEN { get; set; }
 
-        [Required(ErrorMessage = "Ngày sinh là bắt buộc.")]
         [DataType(DataType.DateTime)]
         [Display(Name = "Ngày sinh")]
         public Nullable<System.DateTime> NGAYSINH { get; set; }

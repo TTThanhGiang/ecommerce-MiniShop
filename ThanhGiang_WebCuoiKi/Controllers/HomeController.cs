@@ -82,48 +82,52 @@ namespace ThanhGiang_WebCuoiKi.Controllers
         {
             return View();
         }
-
-        //HTTP post DangKy
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DangKy(tbNGUOIDUNG nguoidung)
+        public  ActionResult DangKy([Bind(Include = "MANGUOIDUNG,TENDANGNHAP,MATKHAU,EMAIL,VAITRO")] tbNGUOIDUNG tbNGUOIDUNG, String HOTEN)
         {
-            var email = nguoidung.EMAIL;
-            nguoidung.VAITRO = "customer";
-
+            var email = tbNGUOIDUNG.EMAIL;
+            tbNGUOIDUNG.VAITRO = "customer";
             if (ModelState.IsValid)
             {
                 if (IsValidEmail(email))
                 {
                     var check = db.tbNGUOIDUNGs.SingleOrDefault(s => s.EMAIL.Equals(email));
-                    var checkusername = db.tbNGUOIDUNGs.SingleOrDefault(s => s.TENDANGNHAP.Equals(nguoidung.TENDANGNHAP));
+                    var checkusername = db.tbNGUOIDUNGs.SingleOrDefault(s => s.TENDANGNHAP.Equals(tbNGUOIDUNG.TENDANGNHAP));
                     if (check == null && checkusername == null)
                     {
-                        db.tbNGUOIDUNGs.Add(nguoidung);
+                        db.tbNGUOIDUNGs.Add(tbNGUOIDUNG);
                         db.SaveChanges();
-
+                        var list = db.tbNGUOIDUNGs.Where(ng => ng.TENDANGNHAP.Equals(tbNGUOIDUNG.TENDANGNHAP)).First();
+                        if(list != null)
+                        {
+                            var makhachhang = db.tbNGUOIDUNGs.Max(ng => ng.MANGUOIDUNG);
+                            tbKHACHHANG kh = new tbKHACHHANG(makhachhang, HOTEN, tbNGUOIDUNG.EMAIL);
+                            db.tbKHACHHANGs.Add(kh);
+                            db.SaveChanges();
+                        }
                         return RedirectToAction("DangNhap");
+                        
                     }
                     else
                     {
-                        ViewBag.Message = "Email đã được sử dụng";
-                        ViewBag.Checkusername = "Tên đăng nhập đã được sử dụng";
+                        if(check != null)
+                            ViewBag.Message = "Email đã được sử dụng";
+                        if(checkusername !=null)
+                            ViewBag.Checkusername = "Tên đăng nhập đã được sử dụng";
                         return View();
                     }
-                    var makhachhang = db.tbNGUOIDUNGs.Max(ng => ng.MANGUOIDUNG) + 1;
-                    tbKHACHHANG kh = new tbKHACHHANG(makhachhang, nguoidung.tbKHACHHANG.HOTEN, nguoidung.EMAIL);
-                    db.tbKHACHHANGs.Add(kh);
-                    db.SaveChanges();
                 }
                 else
                 {
                     ViewBag.Message = "Email không đúng định dạng";
+                    return View();
                 }
-                
             }
-            return View();
+
+            return View(tbNGUOIDUNG);
         }
-        
+       
         public ActionResult AddToCart(int masanpham, int? soluong)
         {
             var sanpham = db.tbSANPHAMs.FirstOrDefault(sp => sp.MASANPHAM == masanpham);
