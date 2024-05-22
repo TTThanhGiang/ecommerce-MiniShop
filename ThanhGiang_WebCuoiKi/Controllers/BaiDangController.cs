@@ -40,6 +40,7 @@ namespace ThanhGiang_WebCuoiKi.Controllers
         // POST: BaiDang/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public async Task<ActionResult> Create([Bind(Include = "MABAIDANG,TIEUDE,NOIDUNG,NGAYBATDAU,NGAYKETTHUC,MACHUYENMUC")] tbBAIDANG tbBAIDANG, HttpPostedFileBase HINHANH)
         {
             tbNGUOIDUNG nguoidung = (tbNGUOIDUNG)Session["NguoiDung"];
@@ -109,6 +110,7 @@ namespace ThanhGiang_WebCuoiKi.Controllers
         // POST: BaiDang/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public async Task<ActionResult> Edit([Bind(Include = "MABAIDANG,TIEUDE,NOIDUNG,NGUOIDANG,NGAYDANG,NGAYBATDAU,NGAYKETTHUC,MACHUYENMUC")] tbBAIDANG tbBAIDANG, HttpPostedFileBase HINHANH)
         {
            

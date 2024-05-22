@@ -36,15 +36,23 @@
                                     <div class="meta mb-3">
                                         @{
                                             DateTime ngaydang = (DateTime)blog.NGAYDANG;
-                                            String noidung = blog.NOIDUNG.Length > 100 ? blog.NOIDUNG.Substring(0, 100) + "..." : blog.NOIDUNG;
+                                            string firstParagraph = "";
+                                            int startIndex = blog.NOIDUNG.IndexOf("<p>");
+                                            int endIndex = blog.NOIDUNG.IndexOf("</p>", startIndex);
+
+                                            if (startIndex != -1 && endIndex != -1)
+                                            {
+                                                firstParagraph = blog.NOIDUNG.Substring(startIndex, endIndex - startIndex + 4);
+                                            }
+                                            String noidung = firstParagraph.Length > 100 ? firstParagraph.Substring(0, 100) + "..." : firstParagraph;
                                         }
                                         <div><a href="#">@ngaydang.ToString("dd/MM/yyyy")</a></div>
                                         <div><a href="#">@blog.tbNHANVIEN.HOTEN</a></div>
                                         <div><a href="#"><i class="lnr lnr-bubble"></i> 3</a></div>
                                     </div>
                                     <h3 class="heading"><a href="#">@blog.TIEUDE</a></h3>
-                                    <p>@noidung</p>
-                                    <p><a href="blog-single.html" class="btn btn-primary py-2 px-3">Read more</a></p>
+                                    <p>@Html.Raw(noidung)</p>
+                                    <p><a href="@Url.Action("DetailsBlog","Home", new {@id = blog.MABAIDANG })" class="btn btn-primary py-2 px-3">Read more</a></p>
                                 </div>
                             </div>
                         </div>
