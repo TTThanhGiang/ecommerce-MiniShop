@@ -40,8 +40,11 @@
             </div>
 
             <div class="form-group">
+                @{ 
+                    String ngaysinh = Model.NGAYSINH.HasValue ? Model.NGAYSINH.Value.ToString("yyyy-MM-dd") : " ";
+                }
                 <label>Ngày sinh</label>
-                <input type="date" class="form-control" id="ngaysinh" name="NGAYSINH" value=@Model.NGAYSINH.Value.ToString("yyyy-MM-dd") />
+                <input type="date" class="form-control" id="ngaysinh" name="NGAYSINH" value=@ngaysinh />
                 @Html.ValidationMessageFor(model => model.NGAYSINH, "", new { @class = "text-danger" })
             </div>
 

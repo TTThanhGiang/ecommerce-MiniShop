@@ -941,7 +941,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\DangNhap.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\DangKy.cshtml" />
     <Content Include="Views\Home\ChiTietSanPham.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Home\Blog.cshtml" />
@@ -958,6 +957,7 @@
     <Content Include="Views\SanPham\Index.cshtml" />
     <Content Include="Views\SanPham\_SanPhamList.cshtml" />
     <Content Include="Views\Home\DetailsBlog.cshtml" />
+    <Content Include="Views\Home\DangKy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
