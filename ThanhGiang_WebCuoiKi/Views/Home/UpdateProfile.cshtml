@@ -28,28 +28,28 @@
             @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>UPDATE PROFILE</h4>
+            <h4>Chỉnh sửa Profile</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.MAKHACHHANG)
 
             <div class="form-group">
                 <label>Họ và tên</label>
-                    @Html.EditorFor(model => model.HOTEN, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HOTEN, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.HOTEN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HOTEN, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
                 <label>Ngày sinh</label>
-                    <input type="date" class="form-control" id="ngaysinh" name="NGAYSINH" value=@Model.NGAYSINH.Value.ToString("yyyy-MM-dd") />
-                    @Html.ValidationMessageFor(model => model.NGAYSINH, "", new { @class = "text-danger" })
+                <input type="date" class="form-control" id="ngaysinh" name="NGAYSINH" value=@Model.NGAYSINH.Value.ToString("yyyy-MM-dd") />
+                @Html.ValidationMessageFor(model => model.NGAYSINH, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
                 <label>Giới tính</label>
 
-                    @Html.EditorFor(model => model.GIOITINH, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.GIOITINH, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.GIOITINH, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GIOITINH, "", new { @class = "text-danger" })
 
             </div>
             <div class="form-group">
@@ -75,14 +75,14 @@
 
             <div class="form-group">
                 <label>Địa chỉ</label>
-                    @Html.EditorFor(model => model.DIACHI, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DIACHI, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.DIACHI, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DIACHI, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
                 <label>Tiểu sử</label>
-                    @Html.TextAreaFor(model => model.TIEUSU, new { @class = "form-control", @rows = "3" })
-                    @Html.ValidationMessageFor(model => model.TIEUSU, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.TIEUSU, new { @class = "form-control", @rows = "3", @id = "NoiDung" })
+                @Html.ValidationMessageFor(model => model.TIEUSU, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
@@ -95,3 +95,13 @@
 
     </div>
 </section>
+@section Scripts{
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("NoiDung", {
+            filebrowserUploadUrl: '@Url.Action("UploadImage", "BaiDang")',
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
+
+}

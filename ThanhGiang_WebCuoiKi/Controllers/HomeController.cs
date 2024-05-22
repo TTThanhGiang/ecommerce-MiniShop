@@ -267,6 +267,7 @@ namespace ThanhGiang_WebCuoiKi.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult UpdateProfile([Bind(Include = "MAKHACHHANG,HOTEN,NGAYSINH,GIOITINH,SDT,EMAIL,DIACHI,TIEUSU")] tbKHACHHANG kh)
         {
             tbNGUOIDUNG nguoidung = (tbNGUOIDUNG)Session["NguoiDung"];
