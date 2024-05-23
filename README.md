@@ -35,3 +35,8 @@ Mở Web.config và chỉnh sửa chuỗi kết nối: Thay source=LAPTOP-9TOR6R
     <add name="dbMiniShopEntities2" connectionString="metadata=res://*/Models.MiniShopModel.csdl|res://*/Models.MiniShopModel.ssdl|res://*/Models.MiniShopModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=LAPTOP-9TOR6RJG;initial catalog=dbMiniShop;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
 </connectionStrings>
 ### 6. Run project
+Tk Admin: thanhgiang
+      mk: 123456
+
+Tk Customer: vanan
+      mk: 123456
