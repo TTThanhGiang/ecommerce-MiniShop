@@ -1,4 +1,7 @@
 # Website Bán Hàng MiniShop
+Đoàn Nguyễn Thành Giang
+Masv: 21115053120114
+LHP: 223LTC04
 
 ## Mô tả
 
